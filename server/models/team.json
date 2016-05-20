@@ -27,10 +27,6 @@
   },
   "validations": [],
   "relations": {
-    "league": {
-      "type": "belongsTo",
-      "model": "League"
-    },
     "homeGames": {
       "type": "hasAndBelongsToMany",
       "model": "Game",
@@ -54,12 +50,12 @@
     "members": {
       "type": "hasAndBelongsToMany",
       "model": "Member",
-      "foreignKey": "favouriteTeamId"
+      "foreignKey": "favoriteTeamId"
     },
     "picks": {
       "type": "hasAndBelongsToMany",
       "model": "Pick",
-      "foreignKey": ""
+      "foreignKey": "teamId"
     }
   },
   "acls": [],

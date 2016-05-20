@@ -32,6 +32,10 @@
     "favoriteTeam": {
       "type": "hasOne",
       "model": "Team"
+    },
+    "picks": {
+      "type": "hasMany",
+      "model": "Pick"
     }
   },
   "acls": [],

@@ -18,18 +18,15 @@
   "relations": {
     "member": {
       "type": "belongsTo",
-      "model": "Member",
-      "foreignKey": ""
+      "model": "Member"
     },
-    "games": {
-      "type": "hasOne",
-      "model": "Game",
-      "foreignKey": ""
+    "game": {
+      "type": "belongsTo",
+      "model": "Game"
     },
-    "teams": {
-      "type": "hasOne",
-      "model": "Team",
-      "foreignKey": ""
+    "team": {
+      "type": "belongsTo",
+      "model": "Team"
     }
   },
   "acls": [],

@@ -34,14 +34,9 @@
       "type": "belongsTo",
       "model": "League"
     },
-    "team": {
-      "type": "belongsTo",
-      "model": "League"
-    },
     "games": {
       "type": "hasMany",
-      "model": "Game",
-      "foreignKey": ""
+      "model": "Game"
     }
   },
   "acls": [],

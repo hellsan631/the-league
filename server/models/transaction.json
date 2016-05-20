@@ -15,19 +15,18 @@
       "type": "string",
       "required": true,
       "default": "credit"
-    }
+    },
+    "week": "number"
   },
   "validations": [],
   "relations": {
     "member": {
       "type": "belongsTo",
-      "model": "Member",
-      "foreignKey": ""
+      "model": "Member"
     },
     "league": {
       "type": "belongsTo",
-      "model": "League",
-      "foreignKey": ""
+      "model": "League"
     }
   },
   "acls": [],

@@ -11,19 +11,18 @@
       "required": true
     },
     "homeScore": {
-      "type": "number",
-      "required": true
+      "type": "number"
     },
     "awayScore": {
-      "type": "number",
-      "required": true
+      "type": "number"
     },
     "overtime": {
       "type": "boolean",
       "default": false
     },
     "playedOn": {
-      "type": "date"
+      "type": "date",
+      "required": true
     }
   },
   "validations": [],
@@ -49,7 +48,7 @@
       "model": "Team"
     },
     "picks": {
-      "type": "hasAndBelongsToMany",
+      "type": "hasMany",
       "model": "Pick"
     }
   },
