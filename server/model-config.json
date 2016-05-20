@@ -12,5 +12,33 @@
       "../common/mixins",
       "./mixins"
     ]
+  },
+  "Member": {
+    "dataSource": null,
+    "public": true
+  },
+  "Transaction": {
+    "dataSource": null,
+    "public": true
+  },
+  "League": {
+    "dataSource": null,
+    "public": false
+  },
+  "Season": {
+    "dataSource": null,
+    "public": true
+  },
+  "Team": {
+    "dataSource": null,
+    "public": true
+  },
+  "Game": {
+    "dataSource": null,
+    "public": true
+  },
+  "Pick": {
+    "dataSource": null,
+    "public": true
   }
 }

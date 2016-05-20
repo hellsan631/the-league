@@ -1,0 +1,36 @@
+{
+  "name": "League",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "entryFee": {
+      "type": "string",
+      "default": "0"
+    },
+    "intervalFee": {
+      "type": "number"
+    },
+    "poolPercent": {
+      "type": "number",
+      "required": true,
+      "default": "60"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

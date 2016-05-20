@@ -1,0 +1,33 @@
+{
+  "name": "Game",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "week": {
+      "type": "number",
+      "required": true
+    },
+    "homeScore": {
+      "type": "number",
+      "required": true
+    },
+    "awayScore": {
+      "type": "number",
+      "required": true
+    },
+    "overtime": {
+      "type": "boolean",
+      "default": false
+    },
+    "playedOn": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
