@@ -1,0 +1,9 @@
+machine:
+  node:
+    version: 6.2.0
+    
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: the-league-test
