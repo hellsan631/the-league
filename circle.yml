@@ -1,8 +1,10 @@
 machine:
   node:
     version: 6.2.0
-  npm:
-    version: 3.8.9
+
+dependencies:
+  pre:
+    - npm install -g npm
     
 deployment:
   staging:
