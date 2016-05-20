@@ -26,7 +26,42 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "league": {
+      "type": "belongsTo",
+      "model": "League"
+    },
+    "homeGames": {
+      "type": "hasAndBelongsToMany",
+      "model": "Game",
+      "foreignKey": "homeTeamId"
+    },
+    "awayGames": {
+      "type": "hasAndBelongsToMany",
+      "model": "Game",
+      "foreignKey": "awayTeamId"
+    },
+    "winGames": {
+      "type": "hasAndBelongsToMany",
+      "model": "Game",
+      "foreignKey": "winTeamId"
+    },
+    "loseGames": {
+      "type": "hasAndBelongsToMany",
+      "model": "Game",
+      "foreignKey": "loseTeamId"
+    },
+    "members": {
+      "type": "hasAndBelongsToMany",
+      "model": "Member",
+      "foreignKey": "favouriteTeamId"
+    },
+    "picks": {
+      "type": "hasAndBelongsToMany",
+      "model": "Pick",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

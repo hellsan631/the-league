@@ -14,31 +14,31 @@
     ]
   },
   "Member": {
-    "dataSource": null,
+    "dataSource": "memory",
     "public": true
   },
   "Transaction": {
-    "dataSource": null,
+    "dataSource": "memory",
     "public": true
   },
   "League": {
-    "dataSource": null,
+    "dataSource": "memory",
     "public": false
   },
   "Season": {
-    "dataSource": null,
+    "dataSource": "memory",
     "public": true
   },
   "Team": {
-    "dataSource": null,
+    "dataSource": "memory",
     "public": true
   },
   "Game": {
-    "dataSource": null,
+    "dataSource": "memory",
     "public": true
   },
   "Pick": {
-    "dataSource": null,
+    "dataSource": "memory",
     "public": true
   }
 }

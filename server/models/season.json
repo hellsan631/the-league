@@ -29,7 +29,21 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "league": {
+      "type": "belongsTo",
+      "model": "League"
+    },
+    "team": {
+      "type": "belongsTo",
+      "model": "League"
+    },
+    "games": {
+      "type": "hasMany",
+      "model": "Game",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

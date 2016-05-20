@@ -27,7 +27,32 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "season": {
+      "type": "belongsTo",
+      "model": "Season"
+    },
+    "homeTeam": {
+      "type": "belongsTo",
+      "model": "Team"
+    },
+    "awayTeam": {
+      "type": "belongsTo",
+      "model": "Team"
+    },
+    "winTeam": {
+      "type": "belongsTo",
+      "model": "Team"
+    },
+    "loseTeam": {
+      "type": "belongsTo",
+      "model": "Team"
+    },
+    "picks": {
+      "type": "hasAndBelongsToMany",
+      "model": "Pick"
+    }
+  },
   "acls": [],
   "methods": {}
 }

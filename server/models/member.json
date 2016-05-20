@@ -24,7 +24,16 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "transactions": {
+      "type": "hasMany",
+      "model": "Transaction"
+    },
+    "favoriteTeam": {
+      "type": "hasOne",
+      "model": "Team"
+    }
+  },
   "acls": [],
   "methods": {}
 }

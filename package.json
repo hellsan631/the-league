@@ -4,7 +4,7 @@
   "main": "server/server.js",
   "scripts": {
     "preinstall": "npm i angular-cli typings -g",
-    "postinstall": "cd client && typings install && ng build",
+    "postinstall": "cd client && typings install && npm install && ng build",
     "start": "node .",
     "pretest": "jshint .",
     "posttest": "nsp check"

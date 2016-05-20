@@ -30,7 +30,21 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "seasons": {
+      "type": "hasMany",
+      "model": "Season"
+    },
+    "teams": {
+      "type": "hasMany",
+      "model": "Team"
+    },
+    "transactions": {
+      "type": "hasMany",
+      "model": "Transaction",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

@@ -15,7 +15,23 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "member": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": ""
+    },
+    "games": {
+      "type": "hasOne",
+      "model": "Game",
+      "foreignKey": ""
+    },
+    "teams": {
+      "type": "hasOne",
+      "model": "Team",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
