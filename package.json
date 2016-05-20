@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "preinstall": "npm i angular-cli typings -g",
+    "preinstall": "npm i angular-cli -g",
     "postinstall": "cd client && npm install",
     "start": "node .",
     "pretest": "jshint .",
@@ -52,6 +52,9 @@
   "repository": {
     "type": "",
     "url": ""
+  },
+  "engines": {
+    "node": "6.2.0"
   },
   "license": "UNLICENSED",
   "description": "the-league"
