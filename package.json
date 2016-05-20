@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "preinstall": "npm i angular-cli -g",
+    "preinstall": "npm i angular-cli typings -g",
     "postinstall": "cd client && npm install",
     "start": "node .",
     "pretest": "jshint .",
