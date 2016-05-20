@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-const localforage = require('localforage');
 
+// Old ES5 syntax for module that doesn't export correctly
 declare var require: any
+const localforage:LocalForage = require('localforage');
 
 export const MEMBER_URL = 'api/members';
 
