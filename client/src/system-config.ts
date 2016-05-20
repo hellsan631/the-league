@@ -3,10 +3,12 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  'localforage': 'vendor/localforage/dist/localforage.js'
 };
 
 /** User packages configuration. */
 const packages: any = {
+  
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
