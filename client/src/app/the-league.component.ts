@@ -10,12 +10,14 @@ import { MemberService } from './shared/member.service';
 })
 export class TheLeagueAppComponent implements OnInit {
   title = 'the-league works!';
+  heroes;
   
   constructor(
     private _memberService: MemberService) {
   }
   
   ngOnInit() {
-    this._memberService.login();
+    this._memberService.login()
+      .subscribe(heroes => this.heroes = heroes);
   }
 }
