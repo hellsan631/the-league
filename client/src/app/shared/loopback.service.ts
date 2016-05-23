@@ -9,10 +9,37 @@ export class LoopbackService {
   constructor(private _http: Http) {}
   
   get(url, filter) {
-    return this._http.get(this._getOrigin() + '/' + url + '?filter=' + filter)
+    return this._http.get(this._parseApiUrl(url, filter))
       .map((res: Response) => res.json());
   }
   
+  post(url, data, filter) {
+    return this._http.post(this._parseApiUrl(url, filter), data)
+      .map((res: Response) => res.json());
+  }
+  
+  put(url, data, filter) {
+    return this._http.put(this._parseApiUrl(url, filter), data)
+      .map((res: Response) => res.json());
+  }
+  
+  
+  // Stringifies and adds the filter where necessary
+  _parseApiUrl(url, filter) {
+    let apiUrl = this._getOrigin() + '/' + url;
+    
+    if (filter) {
+      if(typeof filter === 'object') {
+        filter = JSON.stringify(filter);
+      }
+      
+      apiUrl += '?filter=' + filter;
+    }
+    
+    return apiUrl;
+  }
+  
+  // Modifies our api url origin if we are in a localhost environment
   _getOrigin() {
     let origin = location.protocol + '//' + location.hostname;
     
@@ -20,7 +47,6 @@ export class LoopbackService {
       return origin + ':' + this.DEV_PORT;
       
     return origin;
-    
   }
 
 }
