@@ -19,7 +19,7 @@ export class MemberService {
     console.log(localforage);
     let filter = {
       where: {
-        email: "matkle414@gmail.com"
+        email: 'matkle414@gmail.com'
       }
     };
     
@@ -27,7 +27,7 @@ export class MemberService {
   }
   
   create(data: Member) {
-    return this._loopback.post(MEMBER_URL, data);
+    return this._loopback.post(`${MEMBER_URL}`, data);
   }
 
 }
