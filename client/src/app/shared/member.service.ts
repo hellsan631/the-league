@@ -3,7 +3,6 @@ import { LoopbackService, LoopbackProvider } from '../loopback/loopback';
 import { Member } from './models/member.model';
 import { Observable } from 'rxjs/Observable';
 
-
 // Old ES5 syntax for module that doesn't export correctly
 declare var require: any
 const localforage:LocalForage = require('localforage');
