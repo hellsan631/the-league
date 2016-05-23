@@ -1,5 +1,5 @@
-export class Team {
-    id: string
+export interface Team {
+    id?: string
     location: string
     name: string
     nickname: string

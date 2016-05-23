@@ -1,5 +1,5 @@
-export class Season {
-    id: string
+export interface Season {
+    id?: string
     name: string
     startDate: any
     endDate: any

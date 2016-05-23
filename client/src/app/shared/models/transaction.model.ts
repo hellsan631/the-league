@@ -1,5 +1,5 @@
-export class Transaction {
-    id: string
+export interface Transaction {
+    id?: string
     amount: number
     currency: string
     week: number

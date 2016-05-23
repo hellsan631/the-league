@@ -1,5 +1,5 @@
-export class Game {
-    id: string
+export interface Game {
+    id?: string
     week: number
     homeScore: number
     awayScore: number
