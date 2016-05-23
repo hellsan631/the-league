@@ -1,64 +1,45 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { LoopbackProvider } from './loopback.provider';
+import { Game } from './models/game.model';
+import { LoopbackInterface } from './loopback.interface';
+import { Observable } from 'rxjs/Observable';
+
+// Old ES5 syntax for module that doesn't export correctly
+declare var require: any
+const localforage: LocalForage = require('localforage');
 
 @Injectable()
-export class LoopbackService {
-  DEV_PORT = 3000;
+export class LoopbackService implements LoopbackInterface {
+  
+  BASE_URL = ''
 
-  constructor(private _http: Http) {}
-  
-  get(url: String, filter?: Object) {
-    return this._http.get(this._parseApiUrl(url, filter))
-      .map((res: Response) => res.json());
-  }
-  
-  post(url: String, data: Object, filter?: Object) {
-    return this._http.post(
-        this._parseApiUrl(url, filter), 
-        JSON.stringify(data)
-      )
-      .map((res: Response) => res.json());
-  }
-  
-  put(url: String, data: Object, filter?: Object) {
-    return this._http.put(
-        this._parseApiUrl(url, filter), 
-        JSON.stringify(data)
-      )
-      .map((res: Response) => res.json());
-  }
-  
-  delete(url: String, filter?: Object) {
-    return this._http.delete(this._parseApiUrl(url, filter))
-      .map((res: Response) => res.json());
-  }
-  
-  head(url: String, filter?: Object) {
-    return this._http.head(this._parseApiUrl(url, filter))
-      .map((res: Response) => res.json());
-  }
-  
-  
-  // Stringifies and adds the filter where necessary
-  _parseApiUrl(url: String, filter?: Object) {
-    let apiUrl = `${this._getOrigin()}/${url}`;
-    
-    if (filter) {     
-      apiUrl += `?filter=${JSON.stringify(filter)}`;
-    }
-    
-    return apiUrl;
-  }
-  
-  // Modifies our api url origin if we are in a localhost environment
-  _getOrigin() {
-    let origin = `${location.protocol}//${location.hostname}`;
-    
-    if (origin.includes('localhost'))
-      return origin + ':' + this.DEV_PORT;
-      
-    return origin;
-  }
+  constructor(
+    private _loopback: LoopbackProvider
+  ) { }  
 
+  //@TODO: Add findOrCreate function
+
+  create(data: any): Observable<any> {
+    return this._loopback.post(this.BASE_URL, data);
+  }
+  
+  find(filter: Object): Observable<Array<any>> {
+    return this._loopback.get(this.BASE_URL, filter);
+  }
+  
+  findOne(filter: Object): Observable<any> {
+    return this._loopback.get(`${this.BASE_URL}/findOne`, filter);
+  }
+  
+  updateById(id: string, data: Object): Observable<any> {
+    return this._loopback.put(`${this.BASE_URL}/${id}`, data);
+  }
+  
+  updateAll(filter: Object, data: Object): Observable<any> {
+    return this._loopback.put(`${this.BASE_URL}/update`, data, filter);
+  }
+  
+  destroyById(id: string): Observable<any> {
+    return this._loopback.delete(`${this.BASE_URL}/${id}`);
+  }
 }
