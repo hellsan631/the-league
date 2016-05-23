@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { LoopbackService } from './loopback.service';
+import { Member } from './models/member.model';
 
 // Old ES5 syntax for module that doesn't export correctly
 declare var require: any
@@ -22,7 +23,11 @@ export class MemberService {
       }
     };
     
-    return this._loopback.get(MEMBER_URL, JSON.stringify(filter));
+    return this._loopback.get(MEMBER_URL);
+  }
+  
+  create(data: Member) {
+    return this._loopback.post(MEMBER_URL, data);
   }
 
 }
