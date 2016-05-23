@@ -14,7 +14,7 @@ export class LoopbackService implements LoopbackInterface {
   BASE_URL = ''
 
   constructor(
-    private _loopback: LoopbackProvider
+    public _loopback: LoopbackProvider
   ) { }  
 
   //@TODO: Add findOrCreate function

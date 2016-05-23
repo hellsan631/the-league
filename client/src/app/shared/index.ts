@@ -8,5 +8,4 @@ export * from './models/team.model';
 export * from './models/transaction.model';
 export * from './models/league.model';
 export * from './game.service';
-export * from './loopback';
 export * from './loopback.provider';

@@ -1,14 +1,17 @@
 import {
+  beforeEachProviders,
+  it,
   describe,
-  ddescribe,
   expect,
-  iit,
-  it
+  inject
 } from '@angular/core/testing';
-import {Loopback} from './loopback.provider';
+import { LoopbackProvider } from './loopback.provider';
 
-describe('Loopback', () => {
-  it('should create an instance', () => {
-    expect(new Loopback()).toBeTruthy();
-  });
+describe('Loopback Service', () => {
+  beforeEachProviders(() => [LoopbackProvider]);
+
+  it('should ...',
+      inject([LoopbackProvider], (service: LoopbackProvider) => {
+    expect(service).toBeTruthy();
+  }));
 });

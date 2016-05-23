@@ -11,11 +11,7 @@ const localforage:LocalForage = require('localforage');
 export const MEMBER_URL = 'api/members';
 
 @Injectable()
-export class MemberService implements LoopbackInterface{
-  
-  constructor(
-    private _loopback: LoopbackService
-  ) {}
+export class MemberService extends LoopbackService {
   
   login() {
     console.log(localforage);
