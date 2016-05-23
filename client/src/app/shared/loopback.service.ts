@@ -42,10 +42,10 @@ export class LoopbackService {
   
   // Stringifies and adds the filter where necessary
   _parseApiUrl(url: String, filter?: Object) {
-    let apiUrl = this._getOrigin() + '/' + url;
+    let apiUrl = `${this._getOrigin()}/${url}`;
     
-    if (filter) {      
-      apiUrl += '?filter=' +  JSON.stringify(filter);
+    if (filter) {     
+      apiUrl += `?filter=${JSON.stringify(filter)}`;
     }
     
     return apiUrl;
@@ -53,7 +53,7 @@ export class LoopbackService {
   
   // Modifies our api url origin if we are in a localhost environment
   _getOrigin() {
-    let origin = location.protocol + '//' + location.hostname;
+    let origin = `${location.protocol}//${location.hostname}`;
     
     if (origin.includes('localhost'))
       return origin + ':' + this.DEV_PORT;
