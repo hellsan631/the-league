@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { LoopbackProvider } from './loopback.provider';
-import { Game } from './models/game.model';
+import { Injectable, Inject } from '@angular/core';
 import { LoopbackInterface } from './loopback.interface';
+import { LoopbackProvider } from './loopback.provider';
+
 import { Observable } from 'rxjs/Observable';
 
 // Old ES5 syntax for module that doesn't export correctly
@@ -10,25 +10,28 @@ const localforage: LocalForage = require('localforage');
 
 @Injectable()
 export class LoopbackService implements LoopbackInterface {
-  
-  BASE_URL = ''
 
   constructor(
-    public _loopback: LoopbackProvider
-  ) { }  
-
-  //@TODO: Add findOrCreate function
+    public BASE_URL: string, 
+    public _loopback: LoopbackProvider) {
+      this.BASE_URL = BASE_URL;
+      this._loopback = _loopback;
+  }
 
   create(data: any): Observable<any> {
     return this._loopback.post(this.BASE_URL, data);
   }
   
-  find(filter: Object): Observable<Array<any>> {
+  find(filter?: Object): Observable<Array<any>> {
     return this._loopback.get(this.BASE_URL, filter);
   }
   
   findOne(filter: Object): Observable<any> {
     return this._loopback.get(`${this.BASE_URL}/findOne`, filter);
+  }
+  
+  findById(id: String): Observable<any> {
+    return this._loopback.get(`${this.BASE_URL}/${id}`);
   }
   
   updateById(id: string, data: Object): Observable<any> {

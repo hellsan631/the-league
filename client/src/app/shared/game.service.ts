@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoopbackService } from './loopback.service';
+import { LoopbackService, LoopbackProvider } from '../loopback/loopback';
 import { Game } from './models/game.model';
 
 // Old ES5 syntax for module that doesn't export correctly
@@ -9,6 +9,8 @@ const localforage: LocalForage = require('localforage');
 @Injectable()
 export class GameService extends LoopbackService {
 
-  BASE_URL = 'api/game'
+  constructor(public _loopback: LoopbackProvider) {
+    super('api/game', _loopback);
+  } 
   
 }

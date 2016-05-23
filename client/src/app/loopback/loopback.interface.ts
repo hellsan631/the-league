@@ -5,9 +5,11 @@ export interface LoopbackInterface {
   
   create(data: Object): Observable<any>
   
-  find(filter: Object): Observable<any>
+  find(filter?: Object): Observable<any>
   
-  findOne(id: string): Observable<any>
+  findOne(filter: Object): Observable<any>
+  
+  findById(id: string): Observable<any>
   
   updateById(id: string, data: Object): Observable<any>
   

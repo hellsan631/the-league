@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
+
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LoopbackProvider {
@@ -10,7 +11,9 @@ export class LoopbackProvider {
   constructor(private _http: Http) {}
   
   get(url: String, filter?: Object): Observable<any> {
-    return this._http.get(this._parseApiUrl(url, filter))
+    return this._http.get(
+        this._parseApiUrl(url, filter)
+      )
       .map((res: Response) => res.json());
   }
   
@@ -31,12 +34,16 @@ export class LoopbackProvider {
   }
   
   delete(url: String, filter?: Object): Observable<any> {
-    return this._http.delete(this._parseApiUrl(url, filter))
+    return this._http.delete(
+        this._parseApiUrl(url, filter)
+      )
       .map((res: Response) => res.json());
   }
   
   head(url: String, filter?: Object): Observable<any> {
-    return this._http.head(this._parseApiUrl(url, filter))
+    return this._http.head(
+        this._parseApiUrl(url, filter)
+      )
       .map((res: Response) => res.json());
   }
   
