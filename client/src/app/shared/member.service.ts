@@ -1,6 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
 import { LoopbackService } from './loopback.service';
 import { Member } from './models/member.model';
+import { Observable } from 'rxjs/Observable';
+import { LoopbackInterface } from './loopback.interface';
 
 // Old ES5 syntax for module that doesn't export correctly
 declare var require: any
@@ -9,7 +11,7 @@ const localforage:LocalForage = require('localforage');
 export const MEMBER_URL = 'api/members';
 
 @Injectable()
-export class MemberService {
+export class MemberService implements LoopbackInterface{
   
   constructor(
     private _loopback: LoopbackService
