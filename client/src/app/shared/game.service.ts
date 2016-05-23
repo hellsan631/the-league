@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoopbackService, LoopbackProvider } from '../loopback/loopback';
+import { LoopbackService, LoopbackProvider } from '../loopback/index';
 import { Game } from './models/game.model';
 
 // Old ES5 syntax for module that doesn't export correctly

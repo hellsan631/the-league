@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoopbackService, LoopbackProvider } from '../loopback/loopback';
+import { LoopbackService, LoopbackProvider } from '../loopback/index';
 import { Member } from './models/member.model';
 import { Observable } from 'rxjs/Observable';
 
