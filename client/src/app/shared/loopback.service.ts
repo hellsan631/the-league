@@ -8,32 +8,44 @@ export class LoopbackService {
 
   constructor(private _http: Http) {}
   
-  get(url, filter) {
+  get(url: String, filter?: Object) {
     return this._http.get(this._parseApiUrl(url, filter))
       .map((res: Response) => res.json());
   }
   
-  post(url, data, filter) {
-    return this._http.post(this._parseApiUrl(url, filter), data)
+  post(url: String, data: Object, filter?: Object) {
+    return this._http.post(
+        this._parseApiUrl(url, filter), 
+        JSON.stringify(data)
+      )
       .map((res: Response) => res.json());
   }
   
-  put(url, data, filter) {
-    return this._http.put(this._parseApiUrl(url, filter), data)
+  put(url: String, data: Object, filter?: Object) {
+    return this._http.put(
+        this._parseApiUrl(url, filter), 
+        JSON.stringify(data)
+      )
+      .map((res: Response) => res.json());
+  }
+  
+  delete(url: String, filter?: Object) {
+    return this._http.delete(this._parseApiUrl(url, filter))
+      .map((res: Response) => res.json());
+  }
+  
+  head(url: String, filter?: Object) {
+    return this._http.head(this._parseApiUrl(url, filter))
       .map((res: Response) => res.json());
   }
   
   
   // Stringifies and adds the filter where necessary
-  _parseApiUrl(url, filter) {
+  _parseApiUrl(url: String, filter?: Object) {
     let apiUrl = this._getOrigin() + '/' + url;
     
-    if (filter) {
-      if(typeof filter === 'object') {
-        filter = JSON.stringify(filter);
-      }
-      
-      apiUrl += '?filter=' + filter;
+    if (filter) {      
+      apiUrl += '?filter=' +  JSON.stringify(filter);
     }
     
     return apiUrl;
