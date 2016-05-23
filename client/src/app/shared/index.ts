@@ -1,1 +1,1 @@
-export * from './member.service';
+export * from './member.service';export * from './loopback.service';

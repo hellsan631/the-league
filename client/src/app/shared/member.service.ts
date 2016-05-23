@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { LoopbackService } from './loopback.service';
 
 // Old ES5 syntax for module that doesn't export correctly
 declare var require: any
@@ -8,11 +9,20 @@ export const MEMBER_URL = 'api/members';
 
 @Injectable()
 export class MemberService {
-
-  constructor() {}
+  
+  constructor(
+    private _loopback: LoopbackService
+  ) {}
   
   login() {
     console.log(localforage);
+    let filter = {
+      where: {
+        email: "matkle414@gmail.com"
+      }
+    };
+    
+    return this._loopback.get(MEMBER_URL, JSON.stringify(filter));
   }
 
 }
