@@ -11,6 +11,6 @@ export class GameService extends LoopbackService {
 
   constructor(public _loopback: LoopbackProvider) {
     super('api/game', _loopback);
-  } 
+  }
   
 }

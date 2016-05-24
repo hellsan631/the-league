@@ -1,5 +1,5 @@
 import { Injectable }     from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
@@ -12,7 +12,8 @@ export class LoopbackProvider {
   
   get(url: String, filter?: Object): Observable<any> {
     return this._http.get(
-        this._parseApiUrl(url, filter)
+        this._parseApiUrl(url, filter),
+        this._getAuthHeaders()
       )
       .map((res: Response) => res.json());
   }
@@ -20,7 +21,8 @@ export class LoopbackProvider {
   post(url: String, data: Object, filter?: Object): Observable<any> {
     return this._http.post(
         this._parseApiUrl(url, filter), 
-        JSON.stringify(data)
+        JSON.stringify(data),
+        this._getAuthHeaders()
       )
       .map((res: Response) => res.json());
   }
@@ -28,21 +30,24 @@ export class LoopbackProvider {
   put(url: String, data: Object, filter?: Object): Observable<any> {
     return this._http.put(
         this._parseApiUrl(url, filter), 
-        JSON.stringify(data)
+        JSON.stringify(data),
+        this._getAuthHeaders()
       )
       .map((res: Response) => res.json());
   }
   
   delete(url: String, filter?: Object): Observable<any> {
     return this._http.delete(
-        this._parseApiUrl(url, filter)
+        this._parseApiUrl(url, filter),
+        this._getAuthHeaders()
       )
       .map((res: Response) => res.json());
   }
   
   head(url: String, filter?: Object): Observable<any> {
     return this._http.head(
-        this._parseApiUrl(url, filter)
+        this._parseApiUrl(url, filter),
+        this._getAuthHeaders()
       )
       .map((res: Response) => res.json());
   }
@@ -67,6 +72,20 @@ export class LoopbackProvider {
       return origin + ':' + this.DEV_PORT;
       
     return origin;
+  }
+  
+  _getAuthHeaders(): Object {
+    let headers   = new Headers();
+    let authToken = localStorage.getItem('authToken');
+ 
+    // Don't know exactly why this should be done?
+    headers.append('Content-Type', 'application/json');
+    
+    if (authToken) {
+      headers.append('Authorization', `Bearer ${authToken}`);
+    }
+    
+    return { headers: headers };
   }
 
 }
