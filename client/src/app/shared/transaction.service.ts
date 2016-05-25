@@ -4,7 +4,7 @@ import { Transaction } from './models/index';
 
 // Old ES5 syntax for module that doesn't export correctly
 declare var require: any
-const localforage: LocalForage = require('localforage');
+const localforage: any = require('localforage');
 
 
 @Injectable()
