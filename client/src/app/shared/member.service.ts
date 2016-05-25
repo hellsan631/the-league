@@ -38,10 +38,10 @@ export class MemberService extends LoopbackService {
   //logout(): Observable<any> {}
   
   getCurrent(): Observable<Member> {
-    return Observable.create(function (observer) {
+    return Observable.create(observer => {
       localforage
         .getItem('currentUser')
-        .then(user => observer.onNext(user))
+        .then(member => observer.onNext(member))
         .catch(error => observer.error(error));
     });
   }
