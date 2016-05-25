@@ -15,10 +15,10 @@ export class MemberService extends LoopbackService {
   }
   
   login(credentials: Credentials): Observable<Member> { 
-    return Observable.create(function (observer) {
+    return Observable.create(observer => {
       this._loopback
         .post(`${this.BASE_URL}/login`, credentials)
-        .then(response => {
+        .subscribe(response => {
           
           // @TODO Loopback's response might be different then whats here.
           localforage.setItem('currentUser', response.user);
