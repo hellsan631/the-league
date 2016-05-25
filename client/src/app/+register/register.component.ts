@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Member } from '../shared/models';
+import { Credentials } from '../shared/models';
 import { MemberService } from '../shared/index';
 import { Router } from '@angular/router';
 
@@ -14,12 +14,12 @@ export class RegisterComponent implements OnInit {
 
   registration: Registration
 
-  member: Member
+  member: Credentials
 
   constructor(
     private _memberService: MemberService,
     private _router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.registration = {
@@ -33,17 +33,20 @@ export class RegisterComponent implements OnInit {
     if (this.registration.password !== this.registration.validatePassword) {
       return alert('bad things');
     }
-    this._memberService.create(this.registration)
+    
+    this.member = {
+      email: this.registration.email,
+      password: this.registration.password
+    };
+    
+    this._memberService.create(this.member)
       .subscribe(
         member => {
           alert('good things');
-          this._memberService.login({
-            email: this.registration.email, 
-            password: this.registration.password
-          })
-            .subscribe(
-              () => this._router.navigate(['/dashboard'])
-            )
+          
+          this._memberService
+            .login(this.member)
+            .subscribe(() => this._router.navigate(['/dashboard']))
         },
         error => console.log(error)
       )

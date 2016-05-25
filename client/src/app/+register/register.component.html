@@ -9,6 +9,6 @@
     <input name="validatePassword" type="password" [(ngModel)]="registration.validatePassword" placeholder="Password" required />
   </div>
   <div>
-    <button [disabled]="!email.valid" (click)="login(email)">Register</button>
+    <button [disabled]="!email.valid" (click)="register(email)">Register</button>
   </div>
 </form>

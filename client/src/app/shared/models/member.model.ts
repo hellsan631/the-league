@@ -1,18 +1,25 @@
 export interface Member {
     id?: string
-    type: string
-    avatar?: string
-    stripeId: string
-    credits: number
-    realm?: string
-    username?: string
-    credentials?: Object
-    challenges?: Object
+
+    //required
     email: string
-    emailVerified?: boolean
-    status?: string
+    password?: string
+    
+    //optional
+    type?: string
+    username?: string
+    avatar?: string
+    stripeId?: string
+    credits?: number
     created?: any
     lastUpdated?: any
+    
+    //secretary stuff
+    emailVerified?: boolean
+    status?: string
+    realm?: string
+    credentials?: Object
+    challenges?: Object
 }
 
 

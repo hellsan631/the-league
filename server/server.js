@@ -30,9 +30,6 @@ boot(app, __dirname, function(err) {
   // start the server if `$ node server.js`
   if (require.main === module)
     app.start();
-    
-  //Mounting our static files
-  mountAngular();
 });
   
 
@@ -42,7 +39,9 @@ function mountAngular() {
   app.use(loopback.static(staticPath));
 
   // any other routes:
-  app.get('/*', function(req, res) {
+  app.use('/*', function(req, res) {
     res.sendFile(staticPath + '/index.html');
   });
+  
+  mountAngular();
 }

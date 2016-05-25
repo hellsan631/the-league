@@ -13,6 +13,22 @@
       "./mixins"
     ]
   },
+  "AccessToken": {
+    "dataSource": "memory",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "memory",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "memory",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "memory",
+    "public": false
+  },
   "Member": {
     "dataSource": "memory",
     "public": true

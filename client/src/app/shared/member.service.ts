@@ -20,14 +20,14 @@ export class MemberService extends LoopbackService {
         .post(`${this.BASE_URL}/login`, credentials)
         .subscribe(response => {
           
-          // @TODO Loopback's response might be different then whats here.
-          localforage.setItem('currentUser', response.user);
-          
           // We're using localStorage here instead so we can get the values syncronously when needed
-          localStorage.setItem('authToken', response.token);
+          localStorage.setItem('authToken', response.id);
           
+          // @TODO Loopback's response might be different then whats here.
+          localforage.setItem('currentUser', {id: response.userId});
+
           // @TODO set auth token for all other requests
-          observer.onNext(response.user);
+          observer.onNext(response.userId);
         },
         error => {
           observer.error(error);
@@ -37,13 +37,23 @@ export class MemberService extends LoopbackService {
   
   //logout(): Observable<any> {}
   
-  getCurrent(): Observable<Member> {
-    return Observable.create(observer => {
-      localforage
+  getCurrent(): Promise<any> {
+    return new Promise((resolve, reject) => {
+       localforage
         .getItem('currentUser')
-        .then(member => observer.onNext(member))
-        .catch(error => observer.error(error));
-    });
+        .then(member => {
+          
+          if (!member) return reject('No Member Found');
+          
+          if (Object.keys(member).length > 1) {
+            resolve(member);
+          }
+          
+          
+        })
+        .catch(error => reject(error));
+    })
+   
   }
   
 }
