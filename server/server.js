@@ -32,7 +32,7 @@ boot(app, __dirname, function(err) {
     app.start();
     
   //Mounting our static files
-  //mountAngular();
+  mountAngular();
 });
   
 
