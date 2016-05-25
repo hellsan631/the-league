@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MemberService } from './shared/member.service';
 import { Member } from './shared/models/index';
 import { LoginComponent } from './+login';
+import { RegisterComponent } from './+register';
 import { Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
 
 @Component({
@@ -13,7 +14,8 @@ import { Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
   directives: [ROUTER_DIRECTIVES]
 })
 @Routes([
-  {path: '/login', component: LoginComponent}
+  {path: '/login', component: LoginComponent},
+  {path: '/register', component: RegisterComponent}
 ])
 export class TheLeagueAppComponent implements OnInit {
   title = 'the-league works!';
