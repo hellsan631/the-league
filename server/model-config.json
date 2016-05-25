@@ -23,7 +23,7 @@
   },
   "League": {
     "dataSource": "memory",
-    "public": false
+    "public": true
   },
   "Season": {
     "dataSource": "memory",
