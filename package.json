@@ -7,6 +7,7 @@
     "postinstall": "cd client && npm install",
     "start": "node .",
     "pretest": "jshint .",
+    "test": "echo 'Test are not yet runnable';",
     "posttest": "nsp check"
   },
   "dependencies": {
