@@ -4,7 +4,7 @@ import { Game } from './models/game.model';
 
 // Old ES5 syntax for module that doesn't export correctly
 declare var require: any
-const localforage: LocalForage = require('localforage');
+const localforage: any = require('localforage');
 
 @Injectable()
 export class GameService extends LoopbackService {
