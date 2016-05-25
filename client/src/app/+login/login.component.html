@@ -1,9 +1,11 @@
-<div>
-  <input type="text" [(ngModel)]="email" placeholder="Email" />
-</div>
-<div>
-  <input type="text" [(ngModel)]="password" placeholder="Password"/>
-</div>
-<div>
-  <button (click)="login()">LOG IN</button>
-</div>
+<form>
+  <div>
+    <input ngControl="email" #email="ngForm" type="email" [(ngModel)]="credentials.email" placeholder="Email" required />
+  </div>
+  <div>
+    <input name="password" type="text" [(ngModel)]="credentials.password" placeholder="Password" required />
+  </div>
+  <div>
+    <button [disabled]="!email.valid" (click)="login(email)">LOG IN</button>
+  </div>
+</form>
