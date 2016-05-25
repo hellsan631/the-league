@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberService } from '../shared/index';
 
 @Component({
   moduleId: module.id,
@@ -8,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() {}
+  email: string;
+  password: string;
+
+  constructor(private _membersService: MemberService) { }
 
   ngOnInit() {
+  }
+  
+  login() {
+    alert(`Login: ${this.email} // Password: ${this.password}`)
   }
 
 }
