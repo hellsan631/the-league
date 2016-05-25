@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit {
     
     console.log(thing);
     
-    alert(`Login: ${this.credentials.email} // Password: ${this.credentials.password}`);
-    
     this._memberService
       .login(this.credentials)
       .subscribe(

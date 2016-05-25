@@ -1,3 +1,14 @@
-<p>
-  register works!
-</p>
+<form>
+  <div>
+    <input ngControl="email" #email="ngForm" type="email" [(ngModel)]="registration.email" placeholder="Email" required />
+  </div>
+  <div>
+    <input name="password" type="password" [(ngModel)]="registration.password" placeholder="Password" required />
+  </div>
+    <div>
+    <input name="validatePassword" type="password" [(ngModel)]="registration.validatePassword" placeholder="Password" required />
+  </div>
+  <div>
+    <button [disabled]="!email.valid" (click)="login(email)">Register</button>
+  </div>
+</form>
