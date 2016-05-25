@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MemberService } from '../shared/index';
-import { Credentials } from '../shared/models';
+import { Credentials, Member } from '../shared/models';
 
 @Component({
   moduleId: module.id,
@@ -14,8 +14,10 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   };
+  
+  member: Member;
 
-  constructor(private _membersService: MemberService) { }
+  constructor(private _memberService: MemberService) { }
 
   ngOnInit() {
   }
@@ -24,7 +26,14 @@ export class LoginComponent implements OnInit {
     
     console.log(thing);
     
-    alert(`Login: ${this.credentials.email} // Password: ${this.credentials.password}`)
+    alert(`Login: ${this.credentials.email} // Password: ${this.credentials.password}`);
+    
+    this._memberService
+      .login(this.credentials)
+      .subscribe(
+        member => this.member = member,
+        error => console.log(error)
+      );
   }
 
 }

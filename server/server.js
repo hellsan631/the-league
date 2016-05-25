@@ -42,7 +42,7 @@ function mountAngular() {
   app.use(loopback.static(staticPath));
 
   // any other routes:
-  app.all('/*', function(req, res) {
+  app.get('/*', function(req, res) {
     res.sendFile(staticPath + '/index.html');
   });
 }

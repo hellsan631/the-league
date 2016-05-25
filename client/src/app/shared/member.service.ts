@@ -28,6 +28,9 @@ export class MemberService extends LoopbackService {
           
           // @TODO set auth token for all other requests
           observer.onNext(response.user);
+        },
+        error => {
+          observer.error(error);
         });
     });
   }
@@ -38,7 +41,8 @@ export class MemberService extends LoopbackService {
     return Observable.create(function (observer) {
       localforage
         .getItem('currentUser')
-        .then(user => observer.onNext(user));
+        .then(user => observer.onNext(user))
+        .catch(error => observer.error(error));
     });
   }
   
