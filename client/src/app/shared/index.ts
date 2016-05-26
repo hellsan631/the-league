@@ -4,3 +4,4 @@ export * from './league.service';
 export * from './season.service';
 export * from './transaction.service';
 export * from './team.service';
+export * from './logger.service';

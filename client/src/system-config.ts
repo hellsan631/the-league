@@ -3,7 +3,8 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  'localforage': 'vendor/localforage/dist/localforage.js'
+  'localforage': 'vendor/localforage/dist/localforage.js',
+  'sweetalert2': 'vendor/sweetalert2/dist/sweetalert2.js'
 };
 
 /** User packages configuration. */
