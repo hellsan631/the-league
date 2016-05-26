@@ -34,6 +34,5 @@ export class TheLeagueAppComponent implements OnInit {
   }
   
   ngOnInit() {
-    
   }
 }

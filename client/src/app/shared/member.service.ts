@@ -28,6 +28,9 @@ export class MemberService extends LoopbackService {
 
           // @TODO set auth token for all other requests
           observer.next(response.userId);
+          
+          // We want to finish our event here;
+          observer.complete();
         },
         error => {
           observer.error(error);
@@ -35,26 +38,76 @@ export class MemberService extends LoopbackService {
     });
   }
   
-  //logout(): Observable<any> {}
+  logout(): Observable<any> {
+    return Observable.create(observer => {
+       
+      localStorage.removeItem('authToken');
+      localforage.removeItem('currentUser');
+      
+      observer.next('logged out');
+ 
+      observer.complete();
+    });
+  }
   
-  getCurrent(): Promise<any> {
-    return new Promise((resolve, reject) => {
-       localforage
+  updateCurrent(data: Object): Observable<Member> {
+    return Observable.create(observer => {
+      localforage
         .getItem('currentUser')
         .then(member => {
           
-          if (!member) return reject('No Member Found');
+          if (!member) {
+            observer.error('No Member Found');
+            return observer.complete();
+          }
+          
+          this.updateById(member.id, data)
+            .subscribe(updated => {
+              localforage
+                .setItem('currentUser', updated)
+                .then(() => {
+                  observer.next(updated);
+                  observer.complete();
+                });
+            });
+                 
+        })
+        .catch(error => observer.error(error)); 
+    });
+  }
+
+  getCurrent(): Observable<Member> {
+    return Observable.create(observer => {
+      localforage
+        .getItem('currentUser')
+        .then(member => {
+          
+          if (!member) {
+            observer.error('No Member Found');
+            return observer.complete();
+          }
           
           if (Object.keys(member).length > 1) {
-            resolve(member);
-          } else {
-            this.findById(member.id)
-              .subscribe(
-                memberFound => resolve(memberFound),
-                error => reject(error))
-          }           
+            observer.next(member);
+          }
+          
+          this.findById(member.id)
+            .subscribe(
+              memberFound => observer.next(memberFound),
+              error => observer.error(error)
+            );
+              
+          this.events.subscribe(event => {
+            if (event.type === 'update' && event.data.id === member.id) {
+              observer.next(event.data);
+            }
+          });
         })
-        .catch(error => reject(error));
-    })   
+        .catch(error => observer.error(error)); 
+      
+      return () => {
+        this.events.unsubscribe();
+      }
+    });
   }  
 }
