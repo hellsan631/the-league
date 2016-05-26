@@ -19,7 +19,6 @@ import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/rou
   {path: '/login', component: LoginComponent},
   {path: '/register', component: RegisterComponent},
   {path: '/dashboard', component: DashboardComponent}
-
 ])
 
 export class TheLeagueAppComponent implements OnInit {

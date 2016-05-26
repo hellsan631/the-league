@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { swal } from 'sweetalert2';
+import { LoggerService } from '../shared';
 
 @Component({
   moduleId: module.id,
@@ -9,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() {}
+  constructor(
+    private _LoggerService: LoggerService
+  ) { }
 
   ngOnInit() {
-    //swal('Sweet Alerts!');
+    this._LoggerService.dialogConfirm('Do you want to save')
+      .then((result) => {
+        if (result) {
+          this._LoggerService.success('saved');
+          return this._LoggerService.dialogSuccess('Saved');
+        }
+        if (!result) {
+          this._LoggerService.error('not saved');
+          return this._LoggerService.dialogError('Data not saved!');
+        }
+      })
   }
-
 }

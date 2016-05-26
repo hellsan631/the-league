@@ -1,20 +1,31 @@
-<form>
-  <div class="row">
-    <div class="input-field col s12">
-      <input name="email" 
-        type="email"
-        placeholder="Email" 
-        ngControl="email" 
-        #email="ngForm"  
-        [(ngModel)]="credentials.email" 
-        required />
-      <label for="email">Email</label>
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="email" 
+          type="email"
+          placeholder="Email" 
+          ngControl="email" 
+          #email="ngForm"  
+          [(ngModel)]="credentials.email"
+          required />
+        <label [class.active]="email.dirty" for="email">Email</label>
+      </div>
     </div>
-  </div>
-  <div>
-    <input name="password" type="password" [(ngModel)]="credentials.password" placeholder="Password" required />
-  </div>
-  <div>
-    <button [disabled]="!email.valid" (click)="login()">LOG IN</button>
-  </div>
-</form>
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="password" 
+          type="password"
+          placeholder="Password" 
+          ngControl="password" 
+          #password="ngForm"  
+          [(ngModel)]="credentials.password" 
+          required />
+        <label [class.active]="password.dirty" for="password">Password</label>
+      </div>
+    </div>
+    <div>
+      <button class="btn" [disabled]="!email.valid" (click)="login(email)">LOG IN</button>
+    </div>
+  </form>
+</div>

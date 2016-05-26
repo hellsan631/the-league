@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MemberService } from '../shared/index';
+import { MemberService } from '../shared';
 import { Credentials, Member } from '../shared/models';
 import { Router } from '@angular/router';
-
-
 
 @Component({
   moduleId: module.id,
@@ -32,12 +30,12 @@ export class LoginComponent implements OnInit {
     
     console.log(thing);
     
-    this._memberService
+    /*this._memberService
       .login(this.credentials)
       .subscribe(
         () => this._router.navigate(['/dashboard']),
         error => console.log(error)
-      );
+      );*/
   }
 
 }
