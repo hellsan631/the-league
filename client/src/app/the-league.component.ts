@@ -3,6 +3,7 @@ import { MemberService } from './shared/member.service';
 import { Member } from './shared/models/index';
 import { LoginComponent } from './+login';
 import { RegisterComponent } from './+register';
+import { DashboardComponent } from './+dashboard';
 import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
 
 @Component({
@@ -16,7 +17,9 @@ import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/rou
 
 @Routes([
   {path: '/login', component: LoginComponent},
-  {path: '/register', component: RegisterComponent}
+  {path: '/register', component: RegisterComponent},
+  {path: '/dashboard', component: DashboardComponent}
+
 ])
 
 export class TheLeagueAppComponent implements OnInit {
