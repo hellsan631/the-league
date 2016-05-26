@@ -1,6 +1,8 @@
-export * from './member.service';
-export * from './game.service';export * from './pick.service';
-export * from './league.service';
-export * from './season.service';
-export * from './transaction.service';
-export * from './team.service';
+export { MemberService } from './member.service';
+export { GameService } from './game.service';
+export { PickService } from './pick.service';
+export { LeagueService } from './league.service';
+export { SeasonService } from './season.service';
+export { TransactionService } from './transaction.service';
+export { TeamService } from './team.service';
+export * from './models';

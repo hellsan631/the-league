@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MemberService } from './shared/member.service';
-import { Member } from './shared/models/index';
+import { MemberService } from './shared';
+import { Member } from './shared/models';
 import { LoginComponent } from './+login';
 import { RegisterComponent } from './+register';
 import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
@@ -25,18 +25,12 @@ export class TheLeagueAppComponent implements OnInit {
   
   constructor(
     private _memberService: MemberService,
-    public router: Router
+    private router: Router
   ) {
     
   }
   
   ngOnInit() {
-    /*
-      this._memberService
-        .login({
-          email: "matkle414@gmail.com", password: "123456"
-        })
-        .subscribe(user => this.user = user);
-    */
+    
   }
 }

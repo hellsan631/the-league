@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   registration: Registration
-
   member: Credentials
 
   constructor(
@@ -41,9 +40,7 @@ export class RegisterComponent implements OnInit {
     
     this._memberService.create(this.member)
       .subscribe(
-        member => {
-          alert('good things');
-          
+        member => {          
           this._memberService
             .login(this.member)
             .subscribe(() => this._router.navigate(['/dashboard']))

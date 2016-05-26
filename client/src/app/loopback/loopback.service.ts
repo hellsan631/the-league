@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable }        from '@angular/core';
 import { LoopbackInterface } from './loopback.interface';
-import { LoopbackProvider } from './loopback.provider';
-import { Observable } from 'rxjs/Observable';
+import { LoopbackProvider }  from './loopback.provider';
+import { Observable }        from 'rxjs/Observable';
 
 @Injectable()
 export class LoopbackService implements LoopbackInterface {

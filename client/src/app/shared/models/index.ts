@@ -1,8 +1,8 @@
-export * from './member.model';
-export * from './game.model';
-export * from './pick.model';
-export * from './season.model';
-export * from './team.model';
-export * from './transaction.model';
-export * from './league.model';
-export * from './credentials.model';
+export { Member } from './member.model';
+export { Game } from './game.model';
+export { Pick } from './pick.model';
+export { Season } from './season.model';
+export { Team } from './team.model';
+export { Transaction } from './transaction.model';
+export { League } from './league.model';
+export { Credentials } from './credentials.model';
