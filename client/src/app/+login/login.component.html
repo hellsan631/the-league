@@ -3,7 +3,7 @@
     <input ngControl="email" #email="ngForm" type="email" [(ngModel)]="credentials.email" placeholder="Email" required />
   </div>
   <div>
-    <input name="password" type="text" [(ngModel)]="credentials.password" placeholder="Password" required />
+    <input name="password" type="password" [(ngModel)]="credentials.password" placeholder="Password" required />
   </div>
   <div>
     <button [disabled]="!email.valid" (click)="login(email)">LOG IN</button>

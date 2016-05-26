@@ -3,7 +3,8 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  'localforage': 'vendor/localforage/dist/localforage.js'
+  'localforage': 'vendor/localforage/dist/localforage.js',
+  'sweetalert2': 'vendor/sweetalert2/dist/sweetalert2.common.js'
 };
 
 /** User packages configuration. */
@@ -34,6 +35,7 @@ const barrels: string[] = [
   'app/login',
   'app/+login',
   'app/+register',
+  'app/+dashboard'
   /** @cli-barrel */
 ];
 

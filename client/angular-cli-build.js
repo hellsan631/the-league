@@ -19,7 +19,8 @@ module.exports = function(defaults) {
       'reflect-metadata/**/*.+(js|js.map)',
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
-      'localforage/dist/localforage.js'
+      'localforage/dist/localforage.js',
+      'sweetalert2/dist/sweetalert2.common.js'
     ]
   });
 };

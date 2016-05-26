@@ -27,7 +27,7 @@ export class MemberService extends LoopbackService {
           localforage.setItem('currentUser', {id: response.userId});
 
           // @TODO set auth token for all other requests
-          observer.onNext(response.userId);
+          observer.next(response.userId);
         },
         error => {
           observer.error(error);
@@ -47,13 +47,14 @@ export class MemberService extends LoopbackService {
           
           if (Object.keys(member).length > 1) {
             resolve(member);
-          }
-          
-          
+          } else {
+            this.findById(member.id)
+              .subscribe(
+                memberFound => resolve(memberFound),
+                error => reject(error))
+          }           
         })
         .catch(error => reject(error));
-    })
-   
-  }
-  
+    })   
+  }  
 }
