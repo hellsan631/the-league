@@ -1,16 +1,18 @@
-import { Directive, Attribute, ElementRef, DynamicComponentLoader } from '@angular/core';
+import { Directive, Attribute, ViewContainerRef, DynamicComponentLoader } from '@angular/core';
 import { Router, RouteData, RouterOutlet, ComponentInstruction } from '@angular/router-deprecated';
 import { UserInterface } from '../';
 
 @Directive({selector: 'secure-outlet'})
+
 export class SecureRouterOutlet extends RouterOutlet {
+  
   signin:string;
   unauthorized:string;
 
   private parentRouter: Router;
   private userService: UserInterface;
 
-  constructor(_elementRef: ElementRef, _loader: DynamicComponentLoader,
+  constructor(_elementRef: ViewContainerRef, _loader: DynamicComponentLoader,
               _parentRouter: Router, @Attribute('name') nameAttr: string,
               userService:UserInterface,
               @Attribute('signin') signinAttr: string,
