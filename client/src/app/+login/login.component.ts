@@ -26,16 +26,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   
-  login(thing) {
-    
-    console.log(thing);
-    
-    /*this._memberService
+  login() {    
+    this._memberService
       .login(this.credentials)
       .subscribe(
         () => this._router.navigate(['/dashboard']),
         error => console.log(error)
-      );*/
+      );
   }
 
 }

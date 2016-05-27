@@ -7,5 +7,6 @@ export { TransactionService } from './transaction.service';
 export { TeamService } from './team.service';
 export { LoggerService } from './logger.service';
 export * from './models';
-export * from './secure-router-outlet';
-export * from './user.interface';
+export * from './secure-router';
+export * from './user.service';
+export { UserInterface } from './user.interface';

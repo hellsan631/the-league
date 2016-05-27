@@ -9,25 +9,25 @@ import {
 import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { SecureRouterOutletComponent } from './secure-router-outlet.component';
+import { SecureRouterComponent } from './secure-router.component';
 
-describe('Component: SecureRouterOutlet', () => {
+describe('Component: SecureRouter', () => {
   let builder: TestComponentBuilder;
 
-  beforeEachProviders(() => [SecureRouterOutletComponent]);
+  beforeEachProviders(() => [SecureRouterComponent]);
   beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {
     builder = tcb;
   }));
 
-  it('should inject the component', inject([SecureRouterOutletComponent],
-      (component: SecureRouterOutletComponent) => {
+  it('should inject the component', inject([SecureRouterComponent],
+      (component: SecureRouterComponent) => {
     expect(component).toBeTruthy();
   }));
 
   it('should create the component', inject([], () => {
-    return builder.createAsync(SecureRouterOutletComponentTestController)
+    return builder.createAsync(SecureRouterComponentTestController)
       .then((fixture: ComponentFixture<any>) => {
-        let query = fixture.debugElement.query(By.directive(SecureRouterOutletComponent));
+        let query = fixture.debugElement.query(By.directive(SecureRouterComponent));
         expect(query).toBeTruthy();
         expect(query.componentInstance).toBeTruthy();
       });
@@ -37,10 +37,10 @@ describe('Component: SecureRouterOutlet', () => {
 @Component({
   selector: 'test',
   template: `
-    <app-secure-router-outlet></app-secure-router-outlet>
+    <app-secure-router></app-secure-router>
   `,
-  directives: [SecureRouterOutletComponent]
+  directives: [SecureRouterComponent]
 })
-class SecureRouterOutletComponentTestController {
+class SecureRouterComponentTestController {
 }
 
