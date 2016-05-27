@@ -32,10 +32,10 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
-  'app/login',
   'app/+login',
   'app/+register',
-  'app/+dashboard'
+  'app/+dashboard',
+  'app/widgets/tl-input',
   /** @cli-barrel */
 ];
 

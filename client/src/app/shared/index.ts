@@ -5,5 +5,5 @@ export { LeagueService } from './league.service';
 export { SeasonService } from './season.service';
 export { TransactionService } from './transaction.service';
 export { TeamService } from './team.service';
-export * from './logger.service';
+export { LoggerService } from './logger.service';
 export * from './models';
