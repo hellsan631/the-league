@@ -1,25 +1,9 @@
-export interface UserInterface {
-    id: string
+export abstract class UserInterface {
+  // is the current user authenticated?
+  abstract isAuthenticated():boolean;
 
-    //required
-    email: string
-    username?: string
-    token: string
-    type: string
-    
-    //optional
-    avatar?: string
-    stripeId?: string
-    credits?: number
-    created?: any
-    lastUpdated?: any
-    
-    //secretary stuff
-    emailVerified?: boolean
-    status?: string
-    realm?: string
-    credentials?: Object
-    challenges?: Object
+  // does the current user have one of these roles?
+  abstract hasRole(roles: string[]):boolean;    
 }
 
 

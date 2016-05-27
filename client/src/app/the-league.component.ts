@@ -5,7 +5,7 @@ import { LoginComponent } from './+login';
 import { RegisterComponent } from './+register';
 import { DashboardComponent } from './+dashboard';
 import { SecureRouterComponent } from './shared/secure-router';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteData } from '@angular/router-deprecated';
 
 @Component({
   moduleId: module.id,
@@ -23,7 +23,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 @RouteConfig([
   { path: '/login', name: 'Login', component: LoginComponent },
   { path: '/register', name: 'Register', component: RegisterComponent },
-  { path: '/', name: 'Dashboard', component: DashboardComponent, useAsDefault: true }
+  { path: '/', name: 'Dashboard', component: DashboardComponent, data:{ roles:[]} , useAsDefault: true }
 ])
 
 export class TheLeagueAppComponent implements OnInit {
