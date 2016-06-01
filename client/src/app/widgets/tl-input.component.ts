@@ -3,8 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   moduleId: module.id,
   selector: 'app-tl-input',
-  templateUrl: 'tl-input.component.html',
-  styleUrls: ['tl-input.component.css']
+  template: `
+    <div></div>
+  `,
+  styles:[
+    `
+      tl-input-component {
+        
+      }
+    `
+  ]
 })
 export class TlInputComponent implements OnInit {
 
