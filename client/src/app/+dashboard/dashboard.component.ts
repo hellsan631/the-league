@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService, appInjector, isUserAuthenticated } from '../shared';
-import { Router, CanActivate } from '@angular/router-deprecated';
+import { LoggerService } from '../shared';
+import { CanActivate } from '@angular/router-deprecated';
 
 @Component({
   moduleId: module.id,
@@ -10,9 +10,6 @@ import { Router, CanActivate } from '@angular/router-deprecated';
 })
 
 @CanActivate((next, prev) => {
-  
-  let injector = appInjector();
-  let router = injector.get(Router);
   
   return true;
 })

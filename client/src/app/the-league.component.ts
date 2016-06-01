@@ -21,7 +21,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 @RouteConfig([
   { path: '/login', name: 'Login', component: LoginComponent },
   { path: '/register', name: 'Register', component: RegisterComponent },
-  { path: '/', name: 'Dashboard', component: DashboardComponent, useAsDefault: true }
+  { path: '/dashboard', name: 'Dashboard', component: DashboardComponent, useAsDefault: true }
 ])
 
 export class TheLeagueAppComponent implements OnInit {

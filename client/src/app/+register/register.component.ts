@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
         member => {          
           this._memberService
             .login(this.member)
-            .subscribe(() => this._router.navigate(['/dashboard']))
+            .subscribe(() => this._router.navigate(['Dashboard']))
         },
         error => console.log(error)
       )

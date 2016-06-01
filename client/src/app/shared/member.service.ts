@@ -20,17 +20,20 @@ export class MemberService extends LoopbackService {
         .post(`${this.BASE_URL}/login`, credentials)
         .subscribe(response => {
           
-          // We're using localStorage here instead so we can get the values syncronously when needed
-          localStorage.setItem('authToken', response.id);
+          this.findById(response.userId)
+            .subscribe(user => {
+              // We're using localStorage here instead so we can get the values syncronously when needed
+              localStorage.setItem('authToken', response.id);
           
-          // @TODO Loopback's response might be different then whats here.
-          localforage.setItem('currentUser', {id: response.userId});
+              // @TODO Loopback's response might be different then whats here.
+              localforage.setItem('currentUser', user);
 
-          // @TODO set auth token for all other requests
-          observer.next(response.userId);
-          
-          // We want to finish our event here;
-          observer.complete();
+              // @TODO set auth token for all other requests
+              observer.next(response.userId);
+                        
+              // We want to finish our event here;
+              observer.complete();              
+          }) 
         },
         error => {
           observer.error(error);

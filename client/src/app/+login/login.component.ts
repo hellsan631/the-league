@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this._memberService
       .login(this.credentials)
       .subscribe(
-        () => this._router.navigate(['/dashboard']),
+        () => this._router.navigate(['Dashboard']),
         error => console.log(error)
       );
   }
