@@ -7,6 +7,6 @@ export { TransactionService } from './transaction.service';
 export { TeamService } from './team.service';
 export { LoggerService } from './logger.service';
 export * from './models';
-export * from './authentication.service';
+export * from './secure-route';
 export * from './app-injector';
 

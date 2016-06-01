@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoggerService } from '../shared';
 import { CanActivate } from '@angular/router-deprecated';
+import { SecureRoute } from '../shared';
 
 @Component({
   moduleId: module.id,
@@ -10,8 +11,7 @@ import { CanActivate } from '@angular/router-deprecated';
 })
 
 @CanActivate((next, prev) => {
-  
-  return true;
+  return SecureRoute(['user', 'admin'], 'Login');
 })
 
 export class DashboardComponent implements OnInit {

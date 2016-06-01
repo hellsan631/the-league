@@ -1,4 +1,4 @@
 export * from './authentication';
-export * from './secure-route.service';
+export * from './secureRoute.service';
 
 
