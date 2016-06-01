@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Credentials } from '../shared/models';
 import { MemberService } from '../shared/index';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router-deprecated';
 
 @Component({
   moduleId: module.id,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../shared';
+import { LoggerService, appInjector, isUserAuthenticated } from '../shared';
+import { Router, CanActivate } from '@angular/router-deprecated';
 
 @Component({
   moduleId: module.id,
@@ -7,6 +8,15 @@ import { LoggerService } from '../shared';
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css']
 })
+
+@CanActivate((next, prev) => {
+  
+  let injector = appInjector();
+  let router = injector.get(Router);
+  
+  return true;
+})
+
 export class DashboardComponent implements OnInit {
 
   constructor(
@@ -14,7 +24,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._LoggerService.dialogConfirm('Do you want to save')
+    /*this._LoggerService.dialogConfirm('Do you want to save')
       .then((result) => {
         if (result) {
           this._LoggerService.success('saved');
@@ -24,6 +34,6 @@ export class DashboardComponent implements OnInit {
           this._LoggerService.error('not saved');
           return this._LoggerService.dialogError('Data not saved!');
         }
-      })
+      })*/
   }
 }

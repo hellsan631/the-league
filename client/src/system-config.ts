@@ -36,7 +36,6 @@ const barrels: string[] = [
   'app/+register',
   'app/+dashboard',
   'app/widgets/tl-input',
-  'app/shared/secure-router',
   /** @cli-barrel */
 ];
 

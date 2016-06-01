@@ -3,7 +3,7 @@ import { enableProdMode, provide } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { TheLeagueAppComponent, environment } from './app/';
 import { LoopbackProvider } from './app/loopback/index';
-import { LoggerService, UserInterface, UserService } from './app/shared';
+import { LoggerService, appInjector } from './app/shared';
 
 if (environment.production) {
   enableProdMode();
@@ -13,7 +13,6 @@ bootstrap(TheLeagueAppComponent, [
   HTTP_PROVIDERS,
   LoopbackProvider,
   LoggerService,
-  provide(UserInterface, { useExisting: UserService }),
-  UserService,
-]);
+])
+.then((appRef) => appInjector(appRef.injector));
 
