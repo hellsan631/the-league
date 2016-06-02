@@ -29,11 +29,10 @@ export class LoginButtonComponent implements OnInit {
         if (user) {
           this.userIsLoggedIn = true
           this.setButtonText();
+        } else {
+          this.userIsLoggedIn = false;
+          this.setButtonText();
         }
-      },
-      err => {
-        this.userIsLoggedIn = false;
-        this.setButtonText();
       });
   }
   
@@ -44,6 +43,7 @@ export class LoginButtonComponent implements OnInit {
         .subscribe(message => {
           this.userIsLoggedIn = false;
           this.setButtonText();
+          
           //@TODO: This should navigate to the main page
           this._router.navigate(['Register']);
         })      

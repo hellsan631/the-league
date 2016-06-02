@@ -4,7 +4,7 @@ import { Member, Credentials } from './models/index';
 import { Observable } from 'rxjs/Observable';
 
 // Old ES5 syntax for module that doesn't export correctly
-declare var require: any
+declare var require: any;
 const localforage: any = require('localforage');
 
 @Injectable()
@@ -26,8 +26,15 @@ export class MemberService extends LoopbackService {
               localStorage.setItem('authToken', response.id);
           
               // @TODO Loopback's response might be different then whats here.
-              localforage.setItem('currentUser', user);
-
+              localforage.setItem('currentUser', user)
+                .then(() => {
+                  this.events.emit({
+                    type: 'auth',
+                    base: this.BASE_URL,
+                    data: user
+                  });
+                });
+              
               // @TODO set auth token for all other requests
               observer.next(response.userId);
                         
@@ -45,7 +52,16 @@ export class MemberService extends LoopbackService {
     return Observable.create(observer => {
        
       localStorage.removeItem('authToken');
-      localforage.removeItem('currentUser');
+      
+      localforage
+        .removeItem('currentUser')
+        .then(() => {
+          this.events.emit({
+            type: 'auth',
+            base: this.BASE_URL,
+            data: false
+          });
+        });
       
       observer.next('logged out');
  
@@ -86,19 +102,19 @@ export class MemberService extends LoopbackService {
         .then(member => {
           
           if (!member) {
-            observer.error('No Member Found');
-            return observer.complete();
+            observer.next(false);
+            return;
           }
           
           if (Object.keys(member).length > 1) {
             observer.next(member);
+          } else {
+            this.findById(member.id)
+              .subscribe(
+                memberFound => observer.next(memberFound),
+                error => observer.error(error)
+              );
           }
-          
-          this.findById(member.id)
-            .subscribe(
-              memberFound => observer.next(memberFound),
-              error => observer.error(error)
-            );
               
           this.events.subscribe(event => {
             if (event.type === 'update' && event.data.id === member.id) {
@@ -107,6 +123,12 @@ export class MemberService extends LoopbackService {
           });
         })
         .catch(error => observer.error(error)); 
+        
+      this.events.subscribe(event => {
+        if (event.type === 'auth') {
+          observer.next(event.data);
+        }
+      });
       
       return () => {
         this.events.unsubscribe();
