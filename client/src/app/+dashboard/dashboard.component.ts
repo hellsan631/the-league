@@ -11,13 +11,14 @@ import { SecureRoute } from '../shared';
 })
 
 @CanActivate((next, prev) => {
-  return SecureRoute(['user', 'admin'], 'Login');
+  console.log(next);
+  return SecureRoute(next);
 })
 
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private _LoggerService: LoggerService
+    private _LoggerService: LoggerService  
   ) { }
 
   ngOnInit() {
