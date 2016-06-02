@@ -14,47 +14,47 @@
     ]
   },
   "AccessToken": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": false
   },
   "ACL": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": false
   },
   "Role": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": false
   },
   "Member": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": true
   },
   "Transaction": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": true
   },
   "League": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": true
   },
   "Season": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": true
   },
   "Team": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": true
   },
   "Game": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": true
   },
   "Pick": {
-    "dataSource": "memory",
+    "dataSource": "mongodb",
     "public": true
   }
 }

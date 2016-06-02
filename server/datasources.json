@@ -2,5 +2,10 @@
   "memory": {
     "name": "memory",
     "connector": "memory"
+  },
+  "mongodb": {
+    "url": "mongodb://theleague:theleagueisthewaytogointermsofapassword@ds031681.mlab.com:31681/heroku_qzx1bm2b",
+    "name": "mongodb",
+    "connector": "mongodb"
   }
 }
