@@ -1,5 +1,5 @@
-import { isUserAuthenticated } from './';
-import { appInjector } from '../';
+import { isUserAuthenticated } from './index';
+import { appInjector } from '../index';
 import { Router } from '@angular/router-deprecated';
 
 export function SecureRoute(roles: string[], redirect: string) {

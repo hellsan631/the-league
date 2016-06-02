@@ -7,6 +7,6 @@ export { TransactionService } from './transaction.service';
 export { TeamService } from './team.service';
 export { LoggerService } from './logger.service';
 export * from './models';
-export * from './secure-route';
+export { SecureRoute, isUserAuthenticated } from './secure-route/index';
 export * from './app-injector';
 
