@@ -2,7 +2,7 @@
 var bourbon = require('node-bourbon');
 
 //adds our main css files to our bourbon so we can import them where ever needed
-bourbon.includePaths.push(__dirname + '\\src\\css\\');
+bourbon.includePaths.push('./src/css');
 
 var Angular2App = require('angular-cli/lib/broccoli/angular2-app');
 
