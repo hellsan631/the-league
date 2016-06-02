@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../shared';
+import { LoggerService } from '../shared/index';
 import { CanActivate } from '@angular/router-deprecated';
-import { SecureRoute } from '../shared';
+import { SecureRoute, RouteList } from '../shared/index';
 
 @Component({
   moduleId: module.id,
