@@ -9,10 +9,9 @@ import { MemberService } from '../shared';
   <div>
     <button class="btn" (click)="buttonClick()">{{ buttonText }}</button>
   </div>
-  `,
-  styleUrls: ['login-button.component.css'] 
+  `
 })
-export class LoginButtonComponent implements OnInit {
+export class TlLoginButtonComponent implements OnInit {
   
   buttonText: string = 'login';
   userIsLoggedIn: boolean = false;
@@ -45,7 +44,7 @@ export class LoginButtonComponent implements OnInit {
           this.setButtonText();
           
           //@TODO: This should navigate to the main page
-          this._router.navigate(['Register']);
+          this._router.navigate(['Login']);
         })      
     } else {
       this._router.navigate(['Login']);

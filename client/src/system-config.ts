@@ -35,8 +35,7 @@ const barrels: string[] = [
   'app/+login',
   'app/+register',
   'app/+dashboard',
-  'app/widgets/tl-input',
-  'app/login-button',
+  'app/widgets',
   /** @cli-barrel */
 ];
 

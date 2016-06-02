@@ -4,7 +4,7 @@ import { Member } from './shared/models';
 import { LoginComponent } from './+login';
 import { RegisterComponent } from './+register';
 import { DashboardComponent } from './+dashboard';
-import { LoginButtonComponent } from './login-button';
+import { TlLoginButtonComponent } from './widgets';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 @Component({
@@ -18,7 +18,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
   ],
   directives: [
     ROUTER_DIRECTIVES,
-    LoginButtonComponent
+    TlLoginButtonComponent
   ]
 })
 
