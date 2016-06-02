@@ -10,7 +10,7 @@ import { MemberService } from '../shared';
     <button class="btn" (click)="buttonClick()">{{ buttonText }}</button>
   </div>
   `,
-  styleUrls: ['login-button.component.css']
+  styleUrls: ['login-button.component.css'] 
 })
 export class LoginButtonComponent implements OnInit {
   
