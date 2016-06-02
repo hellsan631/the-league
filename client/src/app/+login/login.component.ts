@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MemberService } from '../shared';
+import { Location } from '@angular/common';
+import { MemberService, SecureRoute } from '../shared';
 import { Credentials, Member } from '../shared/models';
 import { Router } from '@angular/router-deprecated';
+
 
 @Component({
   moduleId: module.id,
@@ -20,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _memberService: MemberService,
-    private _router: Router  
+    private _router: Router,
+    private _location: Location
   ) { }
 
   ngOnInit() {
@@ -30,7 +33,7 @@ export class LoginComponent implements OnInit {
     this._memberService
       .login(this.credentials)
       .subscribe(
-        () => this._router.navigate(['Dashboard']),
+        () => this._location.back(),
         error => console.log(error)
       );
   }
