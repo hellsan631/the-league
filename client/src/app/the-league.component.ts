@@ -4,6 +4,7 @@ import { Member } from './shared/models';
 import { LoginComponent } from './+login';
 import { RegisterComponent } from './+register';
 import { DashboardComponent } from './+dashboard';
+import { LoginButtonComponent } from './login-button';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 @Component({
@@ -15,13 +16,16 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
     ROUTER_PROVIDERS,
     MemberService
   ],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [
+    ROUTER_DIRECTIVES,
+    LoginButtonComponent
+  ]
 })
 
 @RouteConfig([
   { path: '/login', name: 'Login', component: LoginComponent },
   { path: '/register', name: 'Register', component: RegisterComponent },
-  { path: '/dashboard', name: 'Dashboard', component: DashboardComponent, useAsDefault: true }
+  { path: '/dashboard', name: 'Dashboard', component: DashboardComponent }
 ])
 
 export class TheLeagueAppComponent implements OnInit {
