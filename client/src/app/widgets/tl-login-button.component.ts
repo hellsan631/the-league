@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
-import { MemberService } from '../shared';
+import { MemberService, LoggerService } from '../shared';
 
 @Component({
   moduleId: module.id,
@@ -18,7 +18,8 @@ export class TlLoginButtonComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _memberService: MemberService
+    private _memberService: MemberService,
+    private _logger: LoggerService
   ) {}
 
   ngOnInit() {
@@ -37,15 +38,22 @@ export class TlLoginButtonComponent implements OnInit {
   
   buttonClick() {
     if (this.userIsLoggedIn) {
-      this._memberService
-        .logout()
-        .subscribe(message => {
-          this.userIsLoggedIn = false;
-          this.setButtonText();
-          
-          //@TODO: This should navigate to the main page
-          this._router.navigate(['Login']);
-        })      
+      this._logger
+        .dialogConfirm('Logout', 'Do you?')
+        .then((result) => {
+          if (result) {
+            this._memberService
+              .logout()
+              .subscribe(message => {
+                this.userIsLoggedIn = false;
+                this.setButtonText();
+                
+                //@TODO: This should navigate to the main page
+                this._router.navigate(['Login']);
+              });    
+          }
+        });
+      
     } else {
       this._router.navigate(['Login']);
     }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MemberService } from './shared';
+import { MemberService, LoggerService } from './shared';
 import { Member } from './shared/models';
 import { RouteList } from './shared/router/index';
 import { TlLoginButtonComponent } from './widgets';
@@ -12,7 +12,8 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
   styleUrls: ['the-league.component.css'],
   providers: [
     ROUTER_PROVIDERS,
-    MemberService
+    MemberService,
+    LoggerService
   ],
   directives: [
     ROUTER_DIRECTIVES,
@@ -25,15 +26,18 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 export class TheLeagueAppComponent implements OnInit {
   title = 'the-league works!';
   user: Member;
-  loaded: boolean;
+  modalOpen: boolean;
 
   constructor(
-    private _memberService: MemberService
+    private _memberService: MemberService,
+    private _logger: LoggerService
   ) {
 
   }
 
-  ngOnInit() {
-    this.loaded = true;
+  ngOnInit() {    
+    this._logger.events.subscribe(event => {
+      this.modalOpen = event.value === 'open';
+    });
   }
 }
