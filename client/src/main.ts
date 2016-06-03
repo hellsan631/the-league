@@ -5,6 +5,8 @@ import { TheLeagueAppComponent, environment } from './app/';
 import { LoopbackProvider } from './app/loopback/index';
 import { LoggerService, appInjector } from './app/shared';
 
+console.log('main');
+
 if (environment.production) {
   enableProdMode();
 }

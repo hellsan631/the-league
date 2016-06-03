@@ -9,7 +9,8 @@ const map: any = {
 
 /** User packages configuration. */
 const packages: any = {
-  
+  sweetalert2: { format: 'cjs', defaultExtension: 'js' },
+  localforage: { format: 'global', defaultExtension: 'js' }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,6 +37,7 @@ const barrels: string[] = [
   'app/+register',
   'app/+dashboard',
   'app/widgets',
+  'app/loopback',
   /** @cli-barrel */
 ];
 
