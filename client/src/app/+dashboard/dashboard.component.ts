@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { LoggerService } from '../shared/index';
 import { CanActivate } from '@angular/router-deprecated';
-import { SecureRoute, RouteList } from '../shared/index';
+import { SecureRoute, RouteList  } from '../shared/index';
+import { TlNavigationComponent } from '../widgets/index';
 
 @Component({
   moduleId: module.id,
   selector: 'app-dashboard',
   templateUrl: 'dashboard.component.html',
-  styleUrls: ['dashboard.component.css']
+  styleUrls: ['dashboard.component.css'],
+  directives: [TlNavigationComponent]
 })
 
 @CanActivate((next, prev) => {
-  console.log(next);
   return SecureRoute(next);
 })
 
