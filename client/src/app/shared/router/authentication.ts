@@ -1,3 +1,5 @@
+import { Promise } from 'es6-shim';
+
 declare var require: any
 const localforage: any = require('localforage');
 

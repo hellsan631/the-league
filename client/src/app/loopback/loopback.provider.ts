@@ -68,7 +68,7 @@ export class LoopbackProvider {
   _getOrigin(): string {
     let origin = `${location.protocol}//${location.hostname}`;
     
-    if (origin.includes('localhost'))
+    if (origin.indexOf('localhost') > -1)
       return origin + ':' + this.DEV_PORT;
       
     return origin;
