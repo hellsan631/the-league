@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { RouteList } from '../shared/router/index';
 
 
