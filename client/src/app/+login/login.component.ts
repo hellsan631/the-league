@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Router, CanActivate } from '@angular/router-deprecated';
+
 import { MemberService, SecureRoute } from '../shared';
 import { Credentials, Member } from '../shared/models';
-import { Router } from '@angular/router-deprecated';
 import { TlNavigationComponent } from '../widgets';
 
 
@@ -13,6 +13,11 @@ import { TlNavigationComponent } from '../widgets';
   styleUrls: ['login.component.css'],
   directives: [TlNavigationComponent]
 })
+
+@CanActivate(next => {
+  return SecureRoute(next);
+})
+
 export class LoginComponent implements OnInit {
 
   credentials: Credentials = {
@@ -24,8 +29,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _memberService: MemberService,
-    private _router: Router,
-    private _location: Location
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -35,7 +39,7 @@ export class LoginComponent implements OnInit {
     this._memberService
       .login(this.credentials)
       .subscribe(
-        () => this._location.back(),
+        () => { this._router.navigate(['Dashboard']); },
         error => console.log(error)
       );
   }

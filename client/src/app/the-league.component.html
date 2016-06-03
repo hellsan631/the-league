@@ -1,13 +1,7 @@
-<h1>
-  {{title}}
-</h1>
+<div [class.modal-open]="loaded">
+  <br>
+  <app-login-button></app-login-button>
+  <br>
 
-<h4>
-  {{user}}
-</h4>
-
-<br>
- <app-login-button></app-login-button>
-<br>
-
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

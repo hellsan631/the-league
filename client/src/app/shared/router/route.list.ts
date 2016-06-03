@@ -1,7 +1,9 @@
+import { RouteDefinition } from '@angular/router-deprecated';
+
 import { LoginComponent } from '../../+login/index';
 import { RegisterComponent } from '../../+register/index';
 import { DashboardComponent } from '../../+dashboard/index';
-import { RouteDefinition } from '@angular/router-deprecated';
+
 
 export const RouteList: RouteDefinition[] = [
   {
@@ -9,7 +11,9 @@ export const RouteList: RouteDefinition[] = [
     name: 'Login', 
     component: LoginComponent,
     data: {
-      display: 'landing'
+      display: 'landing',
+      roles: ['guest'],
+      redirect: 'Dashboard'
     }
   },
   { 
@@ -17,7 +21,9 @@ export const RouteList: RouteDefinition[] = [
     name: 'Register', 
     component: RegisterComponent,
     data: {
-      display: 'landing'
+      display: 'landing',
+      roles: ['guest'],
+      redirect: 'Dashboard'
     }
   },
   { 

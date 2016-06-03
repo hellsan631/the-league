@@ -6,7 +6,8 @@ export { SeasonService } from './season.service';
 export { TransactionService } from './transaction.service';
 export { TeamService } from './team.service';
 export { LoggerService } from './logger.service';
-export * from './models';
+export { appInjector } from './app-injector';
+export * from './models/index';
 export * from './router/index';
-export * from './app-injector';
+
 

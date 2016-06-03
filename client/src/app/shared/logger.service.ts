@@ -1,18 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 declare var require: any
 const swal: any = require('sweetalert2');
 
 @Injectable()
 export class LoggerService {
+  events = new EventEmitter();
 
   constructor() { }
 
   dialogSuccess(title: String, text?: String): Promise<any> {
+    
+    //emit modal open event;
     return swal({
       title: title,
       type: 'success',
       text: text || 'nice'
+    })
+    .finally(()=> {
+      //emit close event
     })
   }
   

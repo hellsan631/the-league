@@ -25,6 +25,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 export class TheLeagueAppComponent implements OnInit {
   title = 'the-league works!';
   user: Member;
+  loaded: boolean;
 
   constructor(
     private _memberService: MemberService
@@ -33,5 +34,6 @@ export class TheLeagueAppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loaded = true;
   }
 }

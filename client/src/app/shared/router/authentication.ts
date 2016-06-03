@@ -10,7 +10,7 @@ export function isUserAuthenticated(roles: Array<String>): Promise<boolean> {
           resolve(roles.indexOf(user.type) > -1);        
         })
     } else {
-      resolve(false);
+      resolve(roles.indexOf('guest') > -1);
     }
   })  
 }

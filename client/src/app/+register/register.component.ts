@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, CanActivate } from '@angular/router-deprecated';
+
 import { Credentials } from '../shared/models';
-import { MemberService } from '../shared/index';
-import { Router } from '@angular/router-deprecated';
+import { MemberService, SecureRoute } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-register',
   templateUrl: 'register.component.html',
   styleUrls: ['register.component.css']
+})
+
+@CanActivate(next => {
+  return SecureRoute(next);
 })
 
 export class RegisterComponent implements OnInit {

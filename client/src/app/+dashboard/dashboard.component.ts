@@ -12,7 +12,7 @@ import { TlNavigationComponent } from '../widgets/index';
   directives: [TlNavigationComponent]
 })
 
-@CanActivate((next, prev) => {
+@CanActivate(next => {
   return SecureRoute(next);
 })
 
