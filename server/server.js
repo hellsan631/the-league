@@ -15,10 +15,12 @@ app.start = function() {
     
     console.log('Web server listening at: %s', baseUrl);
     
-    if (app.get('loopback-component-explorer')) {
+    if (process.env.NODE_ENV !== 'production' && app.get('loopback-component-explorer')) {
       explorerPath = app.get('loopback-component-explorer').mountPath;
       console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
     }
+    
+    mountAngular();
   });
 };
 
@@ -39,9 +41,12 @@ function mountAngular() {
   app.use(loopback.static(staticPath));
 
   // any other routes:
-  app.use('/*', function(req, res) {
+  app.use('/*', function(req, res, next) {
+    
+    if(req.originalUrl.indexOf('api') > -1) {
+      return next();
+    }
+    
     res.sendFile(staticPath + '/index.html');
   });
-  
-  mountAngular();
 }
