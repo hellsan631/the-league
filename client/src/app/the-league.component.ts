@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { MemberService, LoggerService } from './shared';
 import { Member } from './shared/models';
 import { RouteList } from './shared/router/index';
 import { TlLoginButtonComponent } from './widgets';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 @Component({
   moduleId: module.id,
