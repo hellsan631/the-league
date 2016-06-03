@@ -43,7 +43,10 @@ function mountAngular() {
   // any other routes:
   app.use('/*', function(req, res, next) {
     
-    if(req.originalUrl.indexOf('api') > -1) {
+    if (req.originalUrl.includes('api')) {
+      return next();
+    } 
+    if (req.originalUrl.includes('js.map')) {
       return next();
     }
     

@@ -7,18 +7,25 @@ export const RouteList: RouteDefinition[] = [
   {
     path: '/login',
     name: 'Login', 
-    component: LoginComponent 
+    component: LoginComponent,
+    data: {
+      display: 'landing'
+    }
   },
   { 
     path: '/register', 
     name: 'Register', 
-    component: RegisterComponent 
+    component: RegisterComponent,
+    data: {
+      display: 'landing'
+    }
   },
   { 
     path: '/dashboard', 
     name: 'Dashboard', 
     component: DashboardComponent, 
     data: {
+      display: 'dashboard',
       roles: ['user', 'admin'],
       redirect: 'Login'
     } 

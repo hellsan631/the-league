@@ -3,13 +3,15 @@ import { Location } from '@angular/common';
 import { MemberService, SecureRoute } from '../shared';
 import { Credentials, Member } from '../shared/models';
 import { Router } from '@angular/router-deprecated';
+import { TlNavigationComponent } from '../widgets';
 
 
 @Component({
   moduleId: module.id,
   selector: 'app-login',
   templateUrl: 'login.component.html',
-  styleUrls: ['login.component.css']
+  styleUrls: ['login.component.css'],
+  directives: [TlNavigationComponent]
 })
 export class LoginComponent implements OnInit {
 

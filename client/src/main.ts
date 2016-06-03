@@ -1,9 +1,16 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode, provide } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { TheLeagueAppComponent, environment } from './app/';
-import { LoopbackProvider } from './app/loopback/index';
-import { LoggerService, appInjector } from './app/shared';
+
+console.log('imported Angular');
+
+import { 
+  LoopbackProvider, 
+  LoggerService, 
+  appInjector, 
+  TheLeagueAppComponent, 
+  environment 
+} from './app/index';
 
 console.log('main');
 
