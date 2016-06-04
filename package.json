@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "main": "server/server.js",
   "scripts": {
-    "preinstall": "npm i angular-cli typings -g",
+    "preinstall": "npm i -g angular-cli typings",
     "postinstall": "cd client && npm install --production",
     "start": "node .",
     "pretest": "jshint .",
@@ -19,7 +19,8 @@
     "loopback-component-explorer": "^2.4.0",
     "loopback-connector-mongodb": "^1.15.2",
     "loopback-datasource-juggler": "^2.39.0",
-    "serve-favicon": "^2.0.1"
+    "serve-favicon": "^2.0.1",
+    "typings": "^1.0.4"
   },
   "devDependencies": {
     "jshint": "^2.5.6",
@@ -31,8 +32,9 @@
   },
   "engines": {
     "node": "6.2.0",
-    "npm": "3.8.9"
+    "npm": "3.9.5"
   },
+  "private": true,
   "license": "UNLICENSED",
   "description": "the-league"
 }
