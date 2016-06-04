@@ -1,7 +1,7 @@
 declare var require: any
 const localforage: any = require('localforage');
 
-export function isUserAuthenticated(roles: Array<String>): Promise<boolean> {
+export function isUserAuthenticated(roles: Array<String>) {
   return new Promise((resolve) => {
     if (localStorage.getItem('authToken')) {
       localforage
