@@ -1,5 +1,4 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Promise } from 'es6-shim';
 
 declare var require: any
 const swal: any = require('sweetalert2');
