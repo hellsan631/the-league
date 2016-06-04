@@ -15,7 +15,9 @@ app.start = function() {
     
     console.log('Web server listening at: %s', baseUrl);
     
-    if (process.env.NODE_ENV !== 'production' && app.get('loopback-component-explorer')) {
+    if (process.env.NODE_ENV !== 'production' && 
+      app.get('loopback-component-explorer')) {
+        
       explorerPath = app.get('loopback-component-explorer').mountPath;
       console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
     }

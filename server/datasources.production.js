@@ -1,7 +1,7 @@
 module.exports = {
   database: {
-    url: process.env.MONGO_URL,
+    url: process.env.MONGODB_URI,
     name: 'database',
     connector: 'mongodb'
   }
-}
+};

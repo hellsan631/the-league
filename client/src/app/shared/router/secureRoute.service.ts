@@ -1,11 +1,9 @@
 import { Router } from '@angular/router-deprecated';
-import { Promise } from 'es6-shim';
-
 import { isUserAuthenticated } from './index';
 import { appInjector } from '../index';
 
 
-export function SecureRoute(route) {
+export function SecureRoute(route): Promise<boolean> {  
   return new Promise(resolve => {
     
     let injector = appInjector();

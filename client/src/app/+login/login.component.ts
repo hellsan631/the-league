@@ -14,7 +14,7 @@ import { TlNavigationComponent } from '../widgets';
   directives: [TlNavigationComponent]
 })
 
-@CanActivate(next => {
+@CanActivate(next => {    
   return SecureRoute(next);
 })
 
