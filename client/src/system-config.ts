@@ -4,13 +4,24 @@
 /** Map relative paths to URLs. */
 const map: any = {
   'localforage': 'vendor/localforage/dist/localforage.js',
-  'sweetalert2': 'vendor/sweetalert2/dist/sweetalert2.common.js'
+  'sweetalert2': 'vendor/sweetalert2/dist/sweetalert2.common.js',
+  'es6-shim':     'vendor/es6-shim/es6-shim.js',
 };
 
 /** User packages configuration. */
 const packages: any = {
-  sweetalert2: { format: 'cjs', defaultExtension: 'js' },
-  localforage: { format: 'global', defaultExtension: 'js' }
+  'sweetalert2': { 
+    format: 'cjs', 
+    defaultExtension: 'js' 
+  },
+  'localforage': { 
+    format: 'global', 
+    defaultExtension: 'js' 
+  },
+  'es6-shim': { 
+    format: 'global', 
+    defaultExtension: 'js'
+  },
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
