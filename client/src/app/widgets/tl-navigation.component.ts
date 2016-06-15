@@ -38,7 +38,6 @@ import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
       margin: 0;
     }
 
-
     li {
       float: none;
     }
@@ -54,7 +53,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
     }
 
   `],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [...ROUTER_DIRECTIVES]
 })
 
 export class TlNavigationComponent implements OnInit {
@@ -68,6 +67,10 @@ export class TlNavigationComponent implements OnInit {
     this.routes = this.routes.filter((route) => {
       return route.data.display === this.display;
     });
+  }
+
+  isActive() {
+
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, CanActivate } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES, CanActivate } from '@angular/router-deprecated';
 
 import { MemberService, SecureRoute } from '../shared';
 import { Credentials, Member } from '../shared/models';
@@ -12,7 +12,7 @@ import { ROUTE_LIST } from '../shared/router/index';
   selector: 'app-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css'],
-  directives: [TlNavigationComponent]
+  directives: [TlNavigationComponent, ...ROUTER_DIRECTIVES]
 })
 
 @CanActivate(next => {    

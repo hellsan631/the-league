@@ -16,7 +16,7 @@ import { TlLoginButtonComponent } from './widgets';
     LoggerService
   ],
   directives: [
-    ROUTER_DIRECTIVES,
+    ...ROUTER_DIRECTIVES,
     TlLoginButtonComponent
   ]
 })

@@ -12,8 +12,7 @@ import { DASHBOARD_ROUTES  } from './dashboard.routes';
   selector: 'app-dashboard',
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
-  directives: [TlNavigationComponent, ROUTER_DIRECTIVES],
-  providers: [ROUTER_PROVIDERS]
+  directives: [TlNavigationComponent, ...ROUTER_DIRECTIVES]
 })
 
 @CanActivate(next => {
@@ -26,7 +25,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private _LoggerService: LoggerService  
-  ) { }
+  ) {
+    
+  }
 
   ngOnInit() {
    console.log(this.routeList);
