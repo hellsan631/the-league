@@ -1,0 +1,1 @@
+export { PicksComponent } from './picks.component';

@@ -1,14 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
-import { RouteList } from '../shared/router/index';
 
 @Component({
   moduleId: module.id,
   selector: 'tl-navigation',
   template: `  
     <nav>
-      <ul [class.open]="true" class="side-nav" *ngFor = "let route of routeList">
-        <li><a [routerLink]="[route.name]">{{ route.name }}</a></li>
+      <ul [class.open]="true" class="side-nav" *ngFor = "let route of routes">
+        <li [class.active]="isActive(route.name)"><a [routerLink]="[route.name]">{{ route.name }}</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </nav>      
@@ -60,13 +59,13 @@ import { RouteList } from '../shared/router/index';
 
 export class TlNavigationComponent implements OnInit {
   @Input() display: string;
-
-  routeList = RouteList
+  @Input() routes: Array<any>;
 
   constructor() { }
 
   ngOnInit() {
-    this.routeList = this.routeList.filter((route) => {
+    console.log(this.routes);
+    this.routes = this.routes.filter((route) => {
       return route.data.display === this.display;
     });
   }

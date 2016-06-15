@@ -4,6 +4,7 @@ import { Router, CanActivate } from '@angular/router-deprecated';
 import { MemberService, SecureRoute } from '../shared';
 import { Credentials, Member } from '../shared/models';
 import { TlNavigationComponent } from '../widgets';
+import { ROUTE_LIST } from '../shared/router/index';
 
 
 @Component({
@@ -26,6 +27,8 @@ export class LoginComponent implements OnInit {
   };
   
   member: Member;
+
+  routeList = ROUTE_LIST;
 
   constructor(
     private _memberService: MemberService,

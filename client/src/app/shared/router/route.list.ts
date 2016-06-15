@@ -5,7 +5,7 @@ import { RegisterComponent } from '../../+register/index';
 import { DashboardComponent } from '../../+dashboard/index';
 
 
-export const RouteList: RouteDefinition[] = [
+export const ROUTE_LIST: RouteDefinition[] = [
   {
     path: '/login',
     name: 'Login', 
@@ -14,7 +14,8 @@ export const RouteList: RouteDefinition[] = [
       display: 'landing',
       roles: ['guest'],
       redirect: 'Dashboard'
-    }
+    },
+    useAsDefault: true
   },
   { 
     path: '/register', 
@@ -27,7 +28,7 @@ export const RouteList: RouteDefinition[] = [
     }
   },
   { 
-    path: '/dashboard', 
+    path: '/dashboard/...', 
     name: 'Dashboard', 
     component: DashboardComponent, 
     data: {

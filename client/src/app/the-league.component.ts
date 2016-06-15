@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { MemberService, LoggerService } from './shared';
 import { Member } from './shared/models';
-import { RouteList } from './shared/router/index';
+import { ROUTE_LIST } from './shared/router/index';
 import { TlLoginButtonComponent } from './widgets';
 
 @Component({
@@ -21,7 +21,7 @@ import { TlLoginButtonComponent } from './widgets';
   ]
 })
 
-@RouteConfig(RouteList)
+@RouteConfig(ROUTE_LIST)
 
 export class TheLeagueAppComponent implements OnInit {
   title = 'the-league works!';
