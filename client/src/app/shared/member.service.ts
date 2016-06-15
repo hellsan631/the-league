@@ -112,7 +112,13 @@ export class MemberService extends LoopbackService {
             this.findById(member.id)
               .subscribe(
                 memberFound => observer.next(memberFound),
-                error => observer.error(error)
+                error => {
+                  this.logout()
+                    .subscribe(() => {
+                      observer.next(false);
+                      observer.complete();
+                    });
+                }
               );
           }
               
