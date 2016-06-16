@@ -1,10 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES, CanActivate } from '@angular/router-deprecated';
 
-import { MemberService, SecureRoute } from '../shared';
-import { Credentials, Member } from '../shared/models';
-import { TlNavigationComponent } from '../widgets';
+import { 
+  Router, 
+  ROUTER_DIRECTIVES, 
+  CanActivate 
+} from '@angular/router-deprecated';
+
 import { ROUTE_LIST } from '../shared/router/index';
+
+import { 
+  Credentials, 
+  Member, 
+  MemberService, 
+  SecureRoute 
+} from '../shared/index';
+
+import { 
+  TlInputComponent, 
+  TlNavigationComponent, 
+  TlContentComponent 
+} from '../widgets/index';
 
 
 @Component({
@@ -12,7 +27,12 @@ import { ROUTE_LIST } from '../shared/router/index';
   selector: 'app-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css'],
-  directives: [TlNavigationComponent, ...ROUTER_DIRECTIVES]
+  directives: [
+    TlInputComponent, 
+    TlContentComponent, 
+    TlNavigationComponent, 
+    ...ROUTER_DIRECTIVES
+  ]
 })
 
 @CanActivate(next => {    

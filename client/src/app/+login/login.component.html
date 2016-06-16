@@ -1,35 +1,30 @@
-<div class="container">
-  <form>
-    <div class="row">
-      <div class="input-field col s12">
-        <input name="email" 
+<tl-content>
+  <div class="container">
+    <form>
+      <div class="row">
+        <tl-input class="col s12"
+          label="Email"
           type="email"
-          placeholder="Email" 
-          ngControl="email" 
-          #email="ngForm"  
-          [(ngModel)]="credentials.email"
-          required />
-        <label [class.active]="email.dirty" for="email">Email</label>
+          [(value)]="credentials.email"
+          required="required">
+        </tl-input>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input name="password" 
+      <div class="row">
+        <tl-input class="col s12"
+          label="Password"
           type="password"
-          placeholder="Password" 
-          ngControl="password" 
-          #password="ngForm"  
-          [(ngModel)]="credentials.password" 
-          required />
-        <label [class.active]="password.dirty" for="password">Password</label>
+          [(value)]="credentials.password"
+          required="required">
+        </tl-input>
       </div>
-    </div>
-    <div>
-      <button class="btn" [disabled]="!email.valid" (click)="login()">LOG IN</button>
-    </div>
-  </form>
-  <tl-navigation 
-    display="landing"
-    [routes]="routeList">
-  </tl-navigation>
-</div>
+      <div>
+        <button class="btn" (click)="login()">LOG IN</button>
+      </div>
+    </form>
+  </div>
+</tl-content>
+
+<tl-navigation 
+  display="landing"
+  [routes]="routeList">
+</tl-navigation>
