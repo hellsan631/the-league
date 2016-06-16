@@ -9,8 +9,7 @@ import { Location } from '@angular/common';
     <nav>
       <ul [class.open]="true" class="side-nav">
         <li *ngFor = "let route of routes">
-          <a class="router-link-active"
-             [routerLink]="[route.name]">
+          <a [routerLink]="[route.name]">
                 {{ route.name }}
           </a>
         </li>
