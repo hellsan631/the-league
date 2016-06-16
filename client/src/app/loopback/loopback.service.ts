@@ -6,7 +6,7 @@ import { Observable }        from 'rxjs/Observable';
 @Injectable()
 export class LoopbackService implements LoopbackInterface {
   
-  public events: EventEmitter<any>;
+  public events: EventEmitter<any> = new EventEmitter();
 
   constructor(
     public BASE_URL: string, 
@@ -14,7 +14,6 @@ export class LoopbackService implements LoopbackInterface {
   ) {
     this.BASE_URL = BASE_URL;
     this.loopback = loopback;
-    this.events   = new EventEmitter();
   }
 
   create(data: any): Observable<any> {

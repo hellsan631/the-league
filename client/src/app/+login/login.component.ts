@@ -22,13 +22,17 @@ import {
 } from '../widgets/index';
 
 
-
 @Component({
   moduleId: module.id,
   selector: 'app-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css'],
-  directives: [TlInputComponent, TlContentComponent, TlNavigationComponent, ...ROUTER_DIRECTIVES]
+  directives: [
+    TlInputComponent, 
+    TlContentComponent, 
+    TlNavigationComponent, 
+    ...ROUTER_DIRECTIVES
+  ]
 })
 
 @CanActivate(next => {    
