@@ -1,5 +1,6 @@
 <tl-navigation
   display="dashboard"
-  [routes]="routeList">
+  [routes]="routeList"
+  (navState)="navBarState($event)">
 </tl-navigation>
 <router-outlet></router-outlet>

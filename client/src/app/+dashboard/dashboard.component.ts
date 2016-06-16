@@ -30,7 +30,11 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-   console.log(this.routeList);
+   
+  }
+
+  navBarState(value) {
+    console.log(`Navbar is visible: ${value}`);
   }
 }
 
