@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../shared/index';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, CanActivate } from '@angular/router-deprecated';
-import { SecureRoute } from '../shared/index';
-import { TlNavigationComponent } from '../widgets/index';
+
+import { LoggerService, SecureRoute } from '../shared/index';
+import { TlContentComponent, TlNavigationComponent } from '../widgets/index';
 import { DASHBOARD_ROUTES  } from './dashboard.routes';
 
 @RouteConfig(DASHBOARD_ROUTES)
@@ -12,7 +12,11 @@ import { DASHBOARD_ROUTES  } from './dashboard.routes';
   selector: 'app-dashboard',
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
-  directives: [TlNavigationComponent, ...ROUTER_DIRECTIVES]
+  directives: [
+    TlContentComponent, 
+    TlNavigationComponent, 
+    ...ROUTER_DIRECTIVES
+  ]
 })
 
 @CanActivate(next => {
@@ -20,6 +24,8 @@ import { DASHBOARD_ROUTES  } from './dashboard.routes';
 })
 
 export class DashboardComponent implements OnInit {
+
+  menuOpen: boolean;
 
   routeList = DASHBOARD_ROUTES;
 
@@ -33,8 +39,8 @@ export class DashboardComponent implements OnInit {
    
   }
 
-  navBarState(value) {
-    console.log(`Navbar is visible: ${value}`);
+  handleMenuOpen(event) {
+    this.menuOpen = event;
   }
 }
 

@@ -1,4 +1,5 @@
-<tl-content>
+<tl-content
+  [open]="menuOpen">
   <div class="container">
     <form>
       <div class="row">
@@ -26,5 +27,6 @@
 
 <tl-navigation 
   display="landing"
-  [routes]="routeList">
+  [routes]="routeList"
+  (navState)="handleMenuOpen($event)">
 </tl-navigation>

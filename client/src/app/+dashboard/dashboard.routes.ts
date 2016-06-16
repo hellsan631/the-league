@@ -5,7 +5,7 @@ import { WeekComponent } from './+week/index';
 
 export const DASHBOARD_ROUTES: RouteDefinition[] = [
   { 
-    path: '/', 
+    path: '/picks', 
     name: 'Picks', 
     component: PicksComponent, 
     data: {

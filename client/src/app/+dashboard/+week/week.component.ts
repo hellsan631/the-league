@@ -6,14 +6,12 @@ import { SecureRoute } from '../../shared/index';
   moduleId: module.id,
   selector: 'tl-picks',
   template: `
-    <div class="abc">
+    <div>
       <p>Week</p>
     </div>
   `,
   styles: [`
-    .abc {
-      padding: 10px 10px 10px 350px;
-    }
+  
   `]
 })
 

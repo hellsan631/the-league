@@ -1,6 +1,9 @@
 <tl-navigation
   display="dashboard"
   [routes]="routeList"
-  (navState)="navBarState($event)">
+  (navState)="handleMenuOpen($event)">
 </tl-navigation>
-<router-outlet></router-outlet>
+<tl-content
+  [open]="menuOpen">
+  <router-outlet></router-outlet>
+</tl-content>

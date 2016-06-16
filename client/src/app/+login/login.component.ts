@@ -50,6 +50,8 @@ export class LoginComponent implements OnInit {
 
   routeList = ROUTE_LIST;
 
+  menuOpen: boolean;
+
   constructor(
     private _memberService: MemberService,
     private _router: Router
@@ -65,6 +67,10 @@ export class LoginComponent implements OnInit {
         () => { this._router.navigate(['Dashboard']); },
         error => console.log(error)
       );
+  }
+
+  handleMenuOpen(open) {
+    this.menuOpen = open;
   }
 
 }
