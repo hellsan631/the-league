@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
   selector: 'tl-content',
   template: `
-    <div [class.open]="open" class="content">
+    <div [class.closed]="!open" class="content">
       <ng-content></ng-content>
     </div>
   `,
@@ -16,15 +16,20 @@ import { Component, Input } from '@angular/core';
         margin-left: 240px;
       }
 
-      .open {
+      .closed {
         margin-left: 0;
       }
     `
   ]
 })
 
-export class TlContentComponent {
+export class TlContentComponent implements OnInit {
   @Input() open: boolean = true;
 
   constructor() {}
+
+  ngOnInit() {
+
+  }
+
 }
