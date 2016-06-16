@@ -1,0 +1,1 @@
+export { WeekComponent } from './week.component';

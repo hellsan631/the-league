@@ -6,8 +6,8 @@ import { SecureRoute } from '../../shared/index';
   moduleId: module.id,
   selector: 'tl-picks',
   template: `
-  	<div class="abc">
-      <p>picks</p>
+    <div class="abc">
+      <p>Week</p>
     </div>
   `,
   styles: [`
@@ -21,7 +21,7 @@ import { SecureRoute } from '../../shared/index';
   return SecureRoute(next);
 })
 
-export class PicksComponent implements OnInit {
+export class WeekComponent implements OnInit {
 
   constructor() { }
 
