@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoopbackService, LoopbackProvider } from '../loopback/index';
 import { Member, Credentials } from './models/index';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 // Old ES5 syntax for module that doesn't export correctly
 declare var require: any;
@@ -95,8 +96,8 @@ export class MemberService extends LoopbackService {
     });
   }
 
-  getCurrent(): Observable<Member> {
-    return Observable.create(observer => {
+  getCurrent(): BehaviorSubject<Member>  {
+    return BehaviorSubject.create(observer => {
       localforage
         .getItem('currentUser')
         .then(member => {
@@ -140,5 +141,5 @@ export class MemberService extends LoopbackService {
         this.events.unsubscribe();
       }
     });
-  }  
+  }
 }

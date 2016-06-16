@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, NgZone, EventEmitter } from '@angular
 import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { Location } from '@angular/common';
 
+import { MemberService, Member } from '../shared/index';
+
 @Component({
   moduleId: module.id,
   selector: 'tl-navigation',
@@ -87,10 +89,12 @@ export class TlNavigationComponent implements OnInit {
 
   sideNavOpen: boolean;
   width: number = window.innerWidth;
+  currentUser: Member;
 
   constructor(
     private _location: Location,
-    private _ngZone: NgZone
+    private _ngZone: NgZone,
+    private _memberService: MemberService
   ) { 
     window.onresize = (e) =>
     {
@@ -102,10 +106,21 @@ export class TlNavigationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.routes = this.routes.filter((route) => {
-      return route.data.display === this.display;
-    });
-    this.checkSideNavState(); 
+    this.checkSideNavState();
+
+    var source = this._memberService.getCurrent();
+    console.log(source.getValue());    
+
+    this._memberService
+      .getCurrent()
+      .subscribe(user => {
+        this.currentUser = user;
+        this.routes = this.routes.filter((route) => {
+          return route.data.display === this.display; 
+        });      
+      }); 
+
+    
   }
 
   toggleSideNav() {

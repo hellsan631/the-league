@@ -24,5 +24,15 @@ export const DASHBOARD_ROUTES: RouteDefinition[] = [
       roles: ['user', 'admin'],
       redirect: 'Login'
     }
+  },
+  { 
+    path: '/admin', 
+    name: 'Admin', 
+    component: WeekComponent, 
+    data: {
+      display: 'dashboard',
+      roles: ['admin'],
+      redirect: 'Login'
+    }
   }
 ];
