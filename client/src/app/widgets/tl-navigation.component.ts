@@ -1,14 +1,24 @@
-import { Component, OnInit, Input, Output, NgZone, EventEmitter } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
-import { Location } from '@angular/common';
+import { 
+  Component, 
+  OnInit, 
+  Input, 
+  Output,  
+  EventEmitter
+} from '@angular/core';
 
-import { MemberService, Member } from '../shared/index';
+import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+
+import { 
+  isUserAuthenticatedSync, 
+  MemberService, 
+  Member 
+} from '../shared/index';
 
 @Component({
   moduleId: module.id,
   selector: 'tl-navigation',
   template: `  
-    <nav>
+    <nav (window:resize)="onResize($event)">
       <ul [class.open]="sideNavOpen" class="side-nav">
         <li *ngFor = "let route of routes">
           <a [routerLink]="[route.name]">
@@ -16,7 +26,7 @@ import { MemberService, Member } from '../shared/index';
           </a>
         </li>
       </ul>
-      <div [class.button-collapse]="!sideNavOpen" (click)="toggleSideNav()">
+      <div class="button-collapse" [class.hidden]="sideNavOpen" (click)="toggleSideNav()">
         <i class="material-icons">menu</i>
       </div>
     </nav>      
@@ -73,10 +83,14 @@ import { MemberService, Member } from '../shared/index';
       height: 56px;
     }
 
+    .hidden {
+      display:none;
+    }
+
     .button-collapse i {
-        font-size: 2.7rem;
-        height: 56px;
-        line-height: 56px;
+      font-size: 2.7rem;
+      height: 56px;
+      line-height: 56px;
     }    
   `],
   directives: [...ROUTER_DIRECTIVES]
@@ -89,38 +103,36 @@ export class TlNavigationComponent implements OnInit {
 
   sideNavOpen: boolean;
   width: number = window.innerWidth;
-  currentUser: Member;
+  currentUser: Member | Boolean;
 
   constructor(
-    private _location: Location,
-    private _ngZone: NgZone,
     private _memberService: MemberService
-  ) { 
-    window.onresize = (e) =>
-    {
-        _ngZone.run(() => {
-            this.width = window.innerWidth;
-            this.checkSideNavState();        
-        });
-    };
-  }
+  ) {}
 
   ngOnInit() {
     this.checkSideNavState();
 
     var source = this._memberService.getCurrent();
-    console.log(source.getValue());    
 
     this._memberService
       .getCurrent()
       .subscribe(user => {
-        this.currentUser = user;
-        this.routes = this.routes.filter((route) => {
-          return route.data.display === this.display; 
-        });      
+        if (user) {
+          this.currentUser = user;
+          this.routes = this.routes.filter(route => {
+            var roleValidated = isUserAuthenticatedSync(route.data.roles, user);
+            return route.data.display === this.display && roleValidated;
+          });
+        }    
       }); 
-
     
+  }
+
+  onResize(event) {
+    if (this.width !== event.target.innerWidth){
+      this.width = event.target.innerWidth;
+      this.checkSideNavState();
+    }
   }
 
   toggleSideNav() {

@@ -40,7 +40,7 @@ export class TlLoginButtonComponent implements OnInit {
     if (this.userIsLoggedIn) {
       this._logger
         .dialogConfirm('Logout', 'Do you?')
-        .then((result) => {
+        .then(result => {
           if (result) {
             this._memberService
               .logout()

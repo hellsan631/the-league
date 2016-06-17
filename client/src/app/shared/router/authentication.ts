@@ -1,7 +1,9 @@
+import { Member } from '../index';
+
 declare var require: any
 const localforage: any = require('localforage');
 
-export function isUserAuthenticated(roles: Array<String>) {
+export function isUserAuthenticated(roles: Array<String>): Promise<boolean> {
   return new Promise(resolve => {
     if (localStorage.getItem('authToken')) {
       localforage
@@ -14,7 +16,16 @@ export function isUserAuthenticated(roles: Array<String>) {
     } else {
       resolve(roles.indexOf('guest') > -1);
     }
-  })  
+  }); 
+}
+
+export function isUserAuthenticatedSync(roles: Array<String>, user: Member | Boolean): boolean {
+  if (!user) {
+    return roles.indexOf('guest') > -1;
+  }
+
+  // define user as type member. Known as 'Union Types'
+  return roles.indexOf((<Member>user).type) > -1; 
 }
 
 
