@@ -96,48 +96,50 @@ export class MemberService extends LoopbackService {
     });
   }
 
-  getCurrent(): BehaviorSubject<Member | Boolean>  {
-    var source = new BehaviorSubject(false);
-    
-    localforage
-      .getItem('currentUser')
-      .then(member => {
-        
-        if (!member) {
-          source.next(false);
-          return;
-        }
-        
-        if (Object.keys(member).length > 1) {
-          source.next(member);
-        } else {
-          this.findById(member.id)
-            .subscribe(
-              memberFound => source.next(memberFound),
-              error => {
-                this.logout()
-                  .subscribe(() => {
-                    source.next(false);
-                    source.complete();
-                  });
-              }
-            );
-        }
-            
-        this.events.subscribe(event => {
-          if (event.type === 'update' && event.data.id === member.id) {
-            source.next(event.data);
+  getCurrent(): Observable<Member | Boolean>  {
+    return Observable.create(observer => {
+      localforage
+        .getItem('currentUser')
+        .then(member => {
+          
+          if (!member) {
+            observer.next(false);
+            return;
           }
-        });
-      })
-      .catch(error => source.error(error)); 
+          
+          if (Object.keys(member).length > 1) {
+            observer.next(member);
+          } else {
+            this.findById(member.id)
+              .subscribe(
+                memberFound => observer.next(memberFound),
+                error => {
+                  this.logout()
+                    .subscribe(() => {
+                      observer.next(false);
+                      observer.complete();
+                    });
+                }
+              );
+          }
+              
+          this.events.subscribe(event => {
+            if (event.type === 'update' && event.data.id === member.id) {
+              observer.next(event.data);
+            }
+          });
+        })
+        .catch(error => observer.error(error)); 
+        
+      this.events.subscribe(event => {
+        if (event.type === 'auth') {
+          observer.next(event.data);
+        }
+      });
       
-    this.events.subscribe(event => {
-      if (event.type === 'auth') {
-        source.next(event.data);
+      return () => {
+        this.events.unsubscribe();
       }
     });
-
-    return source;
   }
 }

@@ -1,9 +1,9 @@
-import { Router } from '@angular/router-deprecated';
+import { Router, ComponentInstruction } from '@angular/router-deprecated';
 
 import { isUserAuthenticated } from './index';
 import { appInjector } from '../index';
 
-export function SecureRoute(route) {
+export function SecureRoute(route: ComponentInstruction): Promise<boolean> {
   return new Promise(resolve => {
     
     let injector = appInjector();
@@ -13,12 +13,11 @@ export function SecureRoute(route) {
 
     // We access routeData like an array here because thats how its typed in ComponentInstruction
 
-    isUserAuthenticated(routeData.roles)
+    isUserAuthenticated(routeData['roles'])
       .then(result => {
-        console.log(route, result);
         if (!result) {
           resolve(false);
-          router.navigate([routeData.redirect || 'Login']);
+          router.navigate([routeData['redirect'] || 'Login']);
         } else {
           resolve(true);
         }
