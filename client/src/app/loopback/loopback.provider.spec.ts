@@ -16,13 +16,14 @@ describe('Loopback Service', () => {
   ]);
 
   it('should get a URL property', 
-    inject([XHRBackend, LoopbackProvider], (service: LoopbackProvider) => {
+    inject([XHRBackend, LoopbackProvider], (backend: XHRBackend, service: LoopbackProvider) => {
       expect(service).toBeTruthy();
     })
   );
   
   it('should format a URL', 
-    inject([XHRBackend, LoopbackProvider], (service: LoopbackProvider) => {
+    inject([XHRBackend, LoopbackProvider], (backend: XHRBackend, service: LoopbackProvider) => {
+      console.log(service);
       var url = service._parseApiUrl('api/members');
       console.log(url);
       
@@ -31,7 +32,7 @@ describe('Loopback Service', () => {
   );
   
   it('should return the origin url', 
-    inject([XHRBackend, LoopbackProvider], (service: LoopbackProvider) => {
+    inject([XHRBackend, LoopbackProvider], (backend: XHRBackend, service: LoopbackProvider) => {
       var url = service._getOrigin();
       var expected = 'http://localhost:4200';
       
