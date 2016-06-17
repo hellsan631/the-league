@@ -117,13 +117,11 @@ export class TlNavigationComponent implements OnInit {
     this._memberService
       .getCurrent()
       .subscribe(user => {
-        if (user) {
-          this.currentUser = user;
-          this.routes = this.routes.filter(route => {
-            var roleValidated = isUserAuthenticatedSync(route.data.roles, user);
-            return route.data.display === this.display && roleValidated;
-          });
-        }    
+        this.currentUser = user;
+        this.routes = this.routes.filter(route => {
+          var roleValidated = isUserAuthenticatedSync(route.data.roles, user);
+          return route.data.display === this.display && roleValidated;
+        });    
       }); 
     
   }
