@@ -11,10 +11,12 @@
       "required": true
     },
     "homeScore": {
-      "type": "number"
+      "type": "number",
+      "default": 0
     },
     "awayScore": {
-      "type": "number"
+      "type": "number",
+      "default": 0
     },
     "overtime": {
       "type": "boolean",

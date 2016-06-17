@@ -12,16 +12,13 @@
       "required": true,
       "default": "user"
     },
-    "avatar": {
-      "type": "string"
-    },
-    "stripeId": {
-      "type": "string"
-    },
+    "avatar": "string",
+    "stripeId": "string",
     "credits": {
       "type": "number",
       "default": "0"
-    }
+    },
+    "paypal": "string"
   },
   "validations": [],
   "relations": {
