@@ -47,6 +47,9 @@ import {
       overflow-y: auto;
       will-change: transform;
       transform: translateX(-105%);
+      -webkit-transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+      -moz-transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+      transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
     }
 
     .open {
