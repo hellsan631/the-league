@@ -3,6 +3,9 @@ machine:
     version: 6.2.0
 
 dependencies:
+  cache_directories:
+    - "client/typings"
+    - "client/node_modules"
   pre:
     - npm install -g npm
     
