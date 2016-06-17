@@ -62,11 +62,11 @@ export class MemberService extends LoopbackService {
             base: this.BASE_URL,
             data: false
           });
-        });
-      
-      observer.next('logged out');
+          
+          observer.next('logged out');
  
-      observer.complete();
+          observer.complete();
+        });
     });
   }
   

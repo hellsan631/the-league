@@ -22,7 +22,7 @@ import {
       <ul [class.open]="sideNavOpen" class="side-nav">
         <li *ngFor = "let route of routes">
           <a [routerLink]="[route.name]">
-                {{ route.name }}
+                {{ route.data.label || route.name }}
           </a>
         </li>
       </ul>
