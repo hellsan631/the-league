@@ -1,9 +1,9 @@
 var moment = require('moment');
 
-module.exports = function (Game) {
+module.exports = function(Game) {
 
   // Get all the games for this week.
-  Game.thisweek = function (cb) {
+  Game.thisweek = function(cb) {
 
     // This week Monday
     var fromDate = moment()
@@ -20,15 +20,18 @@ module.exports = function (Game) {
     var filter = {
       where: {
         playedOn: {
-          gt: fromDate,
-          lt: toDate
+          between: [
+            fromDate,
+            toDate
+          ]
         }
       }
     };
 
-    Game.find(filter, function (result) {
-      cb(null, result);
-    });
+    Game.find(filter)
+      .then(function(result) {
+        cb(null, result);
+      });
 
   };
 
