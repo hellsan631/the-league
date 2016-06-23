@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CanActivate } from '@angular/router-deprecated';
-import { SecureRoute } from '../../shared/index';
+import { SecureRoute } from '../shared/index';
 
 @Component({
   moduleId: module.id,
-  selector: 'tl-picks',
+  selector: 'tl-admin',
   template: `
   	<div>
       <p>picks</p>

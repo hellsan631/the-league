@@ -1,13 +1,10 @@
 module.exports = function (Season) {
 
-  // http://localhost:3000/api/Seasons/1/weeklygames/0 --> All games.
-  // http://localhost:3000/api/Seasons/1/weeklygames/1 --> Games for week 1.
-
   // Get all the games for this season and week.
-  Season.weeklyGamesWeek = function (id, week, cb) {    
+  Season.getWeeklyGamesByWeek = function (seasonId, week, cb) {    
     var filter = {
       where: {
-        seasonId: id,
+        seasonId: seasonId,
         week: week
       }
     };
@@ -15,10 +12,10 @@ module.exports = function (Season) {
   };
  
   Season.remoteMethod(
-    'weeklyGamesWeek', {
+    'getWeeklyGamesByWeek', {
       accepts: [
         {
-          arg: 'id',
+          arg: 'seasonId',
           type: 'string',
           required: true
         },
@@ -29,7 +26,7 @@ module.exports = function (Season) {
         }
       ],
       http: {
-        path: '/:id/weeklygames/:week',
+        path: '/:seasonId/weeklygames/:week',
         verb: 'get'
       },
       returns: {
@@ -40,50 +37,54 @@ module.exports = function (Season) {
   );
 
   // Get all the games for this season.
-  Season.weeklyGames = function (id, cb) {
+  Season.getWeeklyGames = function (seasonId, cb) {
     var filter = {
       where: {
-        seasonId: id
+        seasonId: seasonId
       }
     };
     getGames(filter, cb);
   };
 
   Season.remoteMethod(
-    'weeklyGames', {
+    'getWeeklyGames', {
       accepts: [
         {
-          arg: 'id',
+          arg: 'seasonId',
           type: 'string',
           required: true
         }
       ],
       http: {
-        path: '/:id/weeklygames/',
+        path: '/:seasonId/weeklygames/',
         verb: 'get'
       },
       returns: {
-        type: 'array',
+        type: 'object',
         root: true
       }
     }
   );
 
   function getGames(filter, cb) {
-    var reply = [{}];
+    var reply = {};
     var Games = Season.app.models.Game;
-    Games.find(filter)
+    Games
+      .find(filter)
       .then(function (result) {
         result.map(function (element) {
-          if (!reply[0][element.week]) {
-            reply[0][element.week] = [element];
+          if (!reply[element.week]) {
+            reply[element.week] = [element];
           } else {
-            reply[0][element.week].push(element);
+            reply[element.week].push(element);
           }
         });
 
-        cb(null, reply);
+        if (filter.where.week) {
+          reply = reply[filter.where.week];
+        }
 
+        cb(null, reply);
       });
   }
 
