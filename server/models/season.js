@@ -1,8 +1,9 @@
 module.exports = function (Season) {
 
+  // http://localhost:3000/api/Seasons/1/weeklygames/0 --> All games.
+  // http://localhost:3000/api/Seasons/1/weeklygames/1 --> Games for week 1.
 
-
-  // Get all the games for this season.
+  // Get all the games for this season and week.
   Season.weeklyGamesWeek = function (id, week, cb) {    
     var filter = {
       where: {
@@ -12,11 +13,7 @@ module.exports = function (Season) {
     };
     getGames(filter, cb);
   };
-
-
-  // IMPORTANT: as soon as you mixin arguments, they are required: true
-  // http://localhost:3000/api/Seasons/1/weeklygames/0 --> All games.
-  // http://localhost:3000/api/Seasons/1/weeklygames/1 --> Games for week 1.
+ 
   Season.remoteMethod(
     'weeklyGamesWeek', {
       accepts: [
@@ -52,9 +49,6 @@ module.exports = function (Season) {
     getGames(filter, cb);
   };
 
-  // IMPORTANT: as soon as you mixin arguments, they are required: true
-  // http://localhost:3000/api/Seasons/1/weeklygames/0 --> All games.
-  // http://localhost:3000/api/Seasons/1/weeklygames/1 --> Games for week 1.
   Season.remoteMethod(
     'weeklyGames', {
       accepts: [
@@ -80,7 +74,6 @@ module.exports = function (Season) {
     var Games = Season.app.models.Game;
     Games.find(filter)
       .then(function (result) {
-        console.log(result);
         result.map(function (element) {
           if (!reply[0][element.week]) {
             reply[0][element.week] = [element];
