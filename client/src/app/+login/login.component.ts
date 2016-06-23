@@ -2,17 +2,15 @@ import { Component, OnInit } from '@angular/core';
 
 import { 
   Router, 
-  ROUTER_DIRECTIVES, 
-  CanActivate 
-} from '@angular/router-deprecated';
+  ROUTER_DIRECTIVES 
+} from '@angular/router';
 
-import { ROUTE_LIST } from '../shared/router/index';
+import { ROUTE_LIST } from '../shared/router/route.list';
 
 import { 
   Credentials, 
   Member, 
-  MemberService, 
-  SecureRoute 
+  MemberService 
 } from '../shared/index';
 
 import { 
@@ -33,10 +31,6 @@ import {
     TlNavigationComponent, 
     ...ROUTER_DIRECTIVES
   ]
-})
-
-@CanActivate(next => {    
-  return SecureRoute(next);
 })
 
 export class LoginComponent implements OnInit {

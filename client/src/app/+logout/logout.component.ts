@@ -2,15 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { 
   Router, 
-  ROUTER_DIRECTIVES, 
-  CanActivate 
-} from '@angular/router-deprecated';
+  ROUTER_DIRECTIVES
+} from '@angular/router';
 
 import { 
   Credentials, 
   Member, 
-  MemberService, 
-  SecureRoute 
+  MemberService 
 } from '../shared/index';
 
 
@@ -25,10 +23,6 @@ import {
   directives: [
     ...ROUTER_DIRECTIVES
   ]
-})
-
-@CanActivate(next => {    
-  return SecureRoute(next);
 })
 
 export class LogoutComponent implements OnInit {

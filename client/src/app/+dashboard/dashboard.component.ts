@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, CanActivate } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, provideRouter } from '@angular/router';
 
-import { LoggerService, SecureRoute } from '../shared/index';
+import { LoggerService } from '../shared/index';
 import { TlContentComponent, TlNavigationComponent } from '../widgets/index';
 import { DASHBOARD_ROUTES  } from './dashboard.routes';
-
-@RouteConfig(DASHBOARD_ROUTES)
 
 @Component({
   moduleId: module.id,
@@ -17,10 +15,6 @@ import { DASHBOARD_ROUTES  } from './dashboard.routes';
     TlNavigationComponent, 
     ...ROUTER_DIRECTIVES
   ]
-})
-
-@CanActivate(next => {
-  return SecureRoute(next);
 })
 
 export class DashboardComponent implements OnInit {

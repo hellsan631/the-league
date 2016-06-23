@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CanActivate } from '@angular/router-deprecated';
-import { SecureRoute } from '../shared/index';
 
 @Component({
   moduleId: module.id,
@@ -13,10 +11,6 @@ import { SecureRoute } from '../shared/index';
   styles: [`
     
   `]
-})
-
-@CanActivate(next => {
-  return SecureRoute(next);
 })
 
 export class AdminComponent implements OnInit {

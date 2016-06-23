@@ -6,7 +6,7 @@ import {
   EventEmitter
 } from '@angular/core';
 
-import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { 
   isUserAuthenticatedSync, 

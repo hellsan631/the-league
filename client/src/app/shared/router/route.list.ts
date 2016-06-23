@@ -1,51 +1,31 @@
-import { RouteDefinition } from '@angular/router-deprecated';
+import { RouterConfig } from '@angular/router';
 
-import { LoginComponent } from '../../+login/index';
-import { LogoutComponent } from '../../+logout/index';
-import { RegisterComponent } from '../../+register/index';
-import { DashboardComponent } from '../../+dashboard/index';
+import { LoginComponent } from '../../+login/login.component';
+import { LogoutComponent } from '../../+logout/logout.component';
+import { RegisterComponent } from '../../+register/register.component';
+import { DashboardComponent } from '../../+dashboard/dashboard.component';
 
 
-export const ROUTE_LIST: RouteDefinition[] = [
+export const ROUTE_LIST: RouterConfig = [
+  {
+    path: '',
+    redirectTo: '/login',
+    terminal: true
+  },
   {
     path: '/login',
-    name: 'Login',
-    component: LoginComponent,
-    data: {
-      display: 'landing',
-      roles: ['guest'],
-      redirect: 'Dashboard'
-    },
-    useAsDefault: true
+    component: LoginComponent
   },
   {
     path: '/register',
-    name: 'Register',
-    component: RegisterComponent,
-    data: {
-      display: 'landing',
-      roles: ['guest'],
-      redirect: 'Dashboard'
-    }
+    component: RegisterComponent
   },
   {
     path: '/dashboard/...',
-    name: 'Dashboard',
-    component: DashboardComponent,
-    data: {
-      display: 'dashboard',
-      roles: ['user', 'admin'],
-      redirect: 'Login'
-    }
+    component: DashboardComponent
   },
   {
     path: '/logout',
-    name: 'Logout',
-    component: LogoutComponent,
-    data: {
-      display: 'landing',
-      roles: ['user', 'admin'],
-      redirect: 'Login'
-    }
+    component: LogoutComponent
   },
 ];

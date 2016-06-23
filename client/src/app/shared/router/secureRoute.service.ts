@@ -1,4 +1,4 @@
-import { Router, ComponentInstruction } from '@angular/router-deprecated';
+/*import { Router, ComponentInstruction } from '@angular/router';
 
 import { isUserAuthenticated } from './index';
 import { appInjector } from '../index';
@@ -24,4 +24,4 @@ export function SecureRoute(route: ComponentInstruction): Promise<boolean> {
       });
       
   });
-}
+}*/
