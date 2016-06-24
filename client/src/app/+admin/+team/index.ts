@@ -1,0 +1,1 @@
+export { TeamManagementComponent } from './teamManagement.component';
