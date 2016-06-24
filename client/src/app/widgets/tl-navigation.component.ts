@@ -20,11 +20,12 @@ import {
   template: `  
     <nav (window:resize)="onResize($event)">
       <ul [class.open]="sideNavOpen" class="side-nav">
-        <li *ngFor = "let route of routes">
+        <li *ngFor="let route of routes">
           <a [routerLink]="[route.name]">
                 {{ route.data.label || route.name }}
           </a>
         </li>
+        
       </ul>
       <div class="button-collapse" [class.hidden]="sideNavOpen" (click)="toggleSideNav()">
         <i class="material-icons">menu</i>
