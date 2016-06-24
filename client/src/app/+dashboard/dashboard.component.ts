@@ -9,7 +9,7 @@ import { DASHBOARD_ROUTES  } from './dashboard.routes';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-dashboard',
+  selector: 'tl-dashboard',
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
   directives: [

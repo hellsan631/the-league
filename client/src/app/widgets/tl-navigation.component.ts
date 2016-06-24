@@ -20,10 +20,22 @@ import {
   template: `  
     <nav (window:resize)="onResize($event)">
       <ul [class.open]="sideNavOpen" class="side-nav">
-        <li *ngFor="let route of routes">
-          <a [routerLink]="[route.name]">
-                {{ route.data.label || route.name }}
+        <li *ngFor="let route of navigationList">
+          <a *ngIf="!route.children" [routerLink]="[route.name]">
+            {{ route.data.label || route.name }}
           </a>
+          <a *ngIf="route.children">
+            {{ route.name }}
+          </a>
+          <div *ngIf="route.children" class="collapsible-body">
+            <ul>
+              <li *ngFor="let child of route.children">
+                <a [routerLink]="[child.name]">
+                  {{ child.data.label || child.name }}
+                </a>
+              </li>
+            </ul>
+          </div>
         </li>
         
       </ul>
@@ -108,6 +120,7 @@ export class TlNavigationComponent implements OnInit {
   sideNavOpen: boolean;
   width: number = window.innerWidth;
   currentUser: Member | Boolean;
+  navigationList: Array<any>
 
   constructor(
     private _memberService: MemberService
@@ -125,9 +138,56 @@ export class TlNavigationComponent implements OnInit {
         this.routes = this.routes.filter(route => {
           var roleValidated = isUserAuthenticatedSync(route.data.roles, user);
           return route.data.display === this.display && roleValidated;
-        });    
+        });
+        this.generateNavList(this.routes);  
       }); 
     
+  }
+
+  generateNavList(routeList: Array<any>) {
+    let tempParentNavList = {};
+    let tempSoloNavList = [];
+
+    let order = 0;
+
+    for (let i = 0; i < routeList.length; i++) {
+      if (routeList[i].data.parent) {
+        if(!tempParentNavList[routeList[i].data.parent]) {
+          tempParentNavList[routeList[i].data.parent] = {
+            name: routeList[i].data.parent,
+            children: [routeList[i]],
+            order: parseInt(order+'')
+          };
+          order++;
+        } else {
+           tempParentNavList[routeList[i].data.parent].children.push(routeList[i]);
+        }
+      } else {
+        routeList[i].order = parseInt(order+'');
+        tempSoloNavList.push(routeList[i]);
+        order++;
+      }
+    }
+
+    console.log('parent list', tempParentNavList, tempSoloNavList);
+
+    for (let parent in tempParentNavList) {
+      tempSoloNavList.push(tempParentNavList[parent]);
+    }
+
+    console.log('temp list', tempSoloNavList);
+
+    this.navigationList = tempSoloNavList.sort(function(a, b){
+      if (a.order < b.order) {
+        return -1;
+      } else if (a.order > b.order) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    console.log('nav list', this.navigationList);
   }
 
   onResize(event) {

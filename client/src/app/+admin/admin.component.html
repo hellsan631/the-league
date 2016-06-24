@@ -1,0 +1,9 @@
+<tl-navigation
+  display="admin"
+  [routes]="routeList"
+  (navState)="handleMenuOpen($event)">
+</tl-navigation>
+<tl-content
+  [open]="menuOpen">
+  <router-outlet></router-outlet>
+</tl-content>

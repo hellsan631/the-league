@@ -7,7 +7,7 @@ import { SecureRoute } from '../../shared/index';
   selector: 'tl-game-management',
   template: `
   	<div>
-      <p>Team Management</p>
+      <p>Game Management</p>
     </div>
   `,
   styles: [`

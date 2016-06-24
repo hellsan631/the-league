@@ -11,10 +11,21 @@ export const ADMIN_ROUTES: RouteDefinition[] = [
     name: 'Users', 
     component: UsersComponent, 
     data: {
-      display: 'dashboard',
+      display: 'admin',
+      roles: ['admin'],
+      redirect: 'Login'
+    },
+    useAsDefault: true
+  },
+  { 
+    path: '/game-management', 
+    name: 'Game Management', 
+    component: GameManagementComponent, 
+    data: {
+      display: 'admin',
       roles: ['admin'],
       redirect: 'Login',
-      parent: 'Admin'
+      parent: 'NFL'
     }
   },
   { 
@@ -22,21 +33,9 @@ export const ADMIN_ROUTES: RouteDefinition[] = [
     name: 'Transactions', 
     component: TransactionsComponent, 
     data: {
-      display: 'dashboard',
+      display: 'admin',
       roles: ['admin'],
-      redirect: 'Login',
-      parent: 'Admin'
-    }
-  },
-  { 
-    path: '/game-management', 
-    name: 'Game Management', 
-    component: GameManagementComponent, 
-    data: {
-      display: 'dashboard',
-      roles: ['admin'],
-      redirect: 'Login',
-      parent: 'Admin'
+      redirect: 'Login'
     }
   },
   { 
@@ -44,10 +43,10 @@ export const ADMIN_ROUTES: RouteDefinition[] = [
     name: 'Team Management', 
     component: TeamManagementComponent, 
     data: {
-      display: 'dashboard',
+      display: 'admin',
       roles: ['admin'],
       redirect: 'Login',
-      parent: 'Admin'
+      parent: 'NFL'
     }
-  },
+  }
 ]

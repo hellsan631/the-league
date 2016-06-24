@@ -4,6 +4,7 @@ import { LoginComponent } from '../../+login/index';
 import { LogoutComponent } from '../../+logout/index';
 import { RegisterComponent } from '../../+register/index';
 import { DashboardComponent } from '../../+dashboard/index';
+import { AdminComponent } from '../../+admin/index';
 
 
 export const ROUTE_LIST: RouteDefinition[] = [
@@ -35,6 +36,16 @@ export const ROUTE_LIST: RouteDefinition[] = [
     data: {
       display: 'dashboard',
       roles: ['user', 'admin'],
+      redirect: 'Login'
+    }
+  },
+  {
+    path: '/admin/...',
+    name: 'Admin',
+    component: AdminComponent,
+    data: {
+      display: 'admin',
+      roles: ['user','admin'],
       redirect: 'Login'
     }
   },

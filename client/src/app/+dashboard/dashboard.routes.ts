@@ -2,7 +2,8 @@ import { RouteDefinition } from '@angular/router-deprecated';
 
 import { PicksComponent } from './+picks/index';
 import { WeekComponent } from './+week/index';
-import { LogoutComponent } from '../+logout/index'
+import { LogoutComponent } from '../+logout/index';
+import { AdminComponent } from '../+admin/index';
 
 
 export const DASHBOARD_ROUTES: RouteDefinition[] = [
@@ -27,14 +28,15 @@ export const DASHBOARD_ROUTES: RouteDefinition[] = [
       redirect: 'Login'
     }
   },
-  { 
-    path: '/admin', 
-    name: 'Admin', 
-    component: WeekComponent, 
+  {
+    path: '/admin/...',
+    name: '../Admin',
+    component: AdminComponent,
     data: {
-      display: 'dashboard',
-      roles: ['admin'],
-      redirect: 'Login'
+      display: 'admin',
+      roles: ['user','admin'],
+      redirect: 'Login',
+      label: 'Admin'
     }
   },
   { 
