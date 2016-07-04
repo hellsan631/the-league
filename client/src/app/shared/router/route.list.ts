@@ -45,7 +45,7 @@ export const ROUTE_LIST: RouteDefinition[] = [
     component: AdminComponent,
     data: {
       display: 'admin',
-      roles: ['user','admin'],
+      roles: ['admin'],
       redirect: 'Login'
     }
   },

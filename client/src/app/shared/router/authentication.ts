@@ -20,7 +20,6 @@ export function isUserAuthenticated(roles: Array<String>): Promise<boolean> {
 }
 
 export function isUserAuthenticatedSync(roles: Array<String>, user: Member | Boolean): boolean {
-  console.log(user);
   if (!user) {
     return roles.indexOf('guest') > -1;
   }

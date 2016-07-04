@@ -6,7 +6,7 @@ import {
   EventEmitter
 } from '@angular/core';
 
-import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
 import { 
   isUserAuthenticatedSync, 
@@ -18,16 +18,16 @@ import {
   moduleId: module.id,
   selector: 'tl-navigation',
   template: `  
-    <nav (window:resize)="onResize($event)">
+    <nav [class.open]="sideNavOpen" (window:resize)="onResize($event)">
       <ul [class.open]="sideNavOpen" class="side-nav">
         <li *ngFor="let route of navigationList">
           <a *ngIf="!route.children" [routerLink]="[route.name]">
             {{ route.data.label || route.name }}
           </a>
-          <a *ngIf="route.children">
+          <a *ngIf="route.children" (click)="route.open = !route.open">
             {{ route.name }}
           </a>
-          <div *ngIf="route.children" class="collapsible-body">
+          <div *ngIf="route.children" [class.open]="route.open" class="collapsible-body">
             <ul>
               <li *ngFor="let child of route.children">
                 <a [routerLink]="[child.name]">
@@ -45,6 +45,13 @@ import {
     </nav>      
   `,
   styles: [`
+    @media only screen and (max-width: 991px) {
+      nav:not(.open) {
+        padding: 0.5em 2em;
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+      }
+    }
+    
     .side-nav {
       position: fixed;
       width: 240px;
@@ -65,7 +72,7 @@ import {
       transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
     }
 
-    .open {
+    .side-nav.open {
       transform: translateX(0%);
     }
 
@@ -77,6 +84,23 @@ import {
       float: none;
     }
 
+    .collapsible-body {
+      max-height:0;
+      overflow:hidden;
+      -webkit-transition: all 400ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+      -moz-transition: all 400ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+      transition: all 400ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+    }
+
+    .collapsible-body a {
+      font-size: 0.9rem;
+      padding-left: 4em;
+    }
+
+    .collapsible-body.open {
+      max-height: 600px;
+    }
+
     li.active {
        background-color: rgba(0,0,0,.05);
     }
@@ -84,11 +108,12 @@ import {
     a {
       display: block;
       font-size: 1rem;
-      padding: 0;
+      cursor:pointer;
     }
 
     .router-link-active {
-      background-color: rgba(0,0,0,.05);
+      font-weight: 500;
+      background-color: rgba(0,0,0,0.1);
     }
 
     // Collapse button
@@ -123,7 +148,8 @@ export class TlNavigationComponent implements OnInit {
   navigationList: Array<any>
 
   constructor(
-    private _memberService: MemberService
+    private _memberService: MemberService,
+    private _router: Router
   ) {}
 
   ngOnInit() {
@@ -156,7 +182,8 @@ export class TlNavigationComponent implements OnInit {
           tempParentNavList[routeList[i].data.parent] = {
             name: routeList[i].data.parent,
             children: [routeList[i]],
-            order: parseInt(order+'')
+            order: parseInt(order+''),
+            open: false
           };
           order++;
         } else {
@@ -169,15 +196,11 @@ export class TlNavigationComponent implements OnInit {
       }
     }
 
-    console.log('parent list', tempParentNavList, tempSoloNavList);
-
     for (let parent in tempParentNavList) {
       tempSoloNavList.push(tempParentNavList[parent]);
     }
 
-    console.log('temp list', tempSoloNavList);
-
-    this.navigationList = tempSoloNavList.sort(function(a, b){
+    this.navigationList = tempSoloNavList.sort((a, b) => {
       if (a.order < b.order) {
         return -1;
       } else if (a.order > b.order) {
@@ -187,7 +210,22 @@ export class TlNavigationComponent implements OnInit {
       return 0;
     });
 
-    console.log('nav list', this.navigationList);
+    this.navigationList.map(navItem => {
+      if (navItem.children) {
+        for (let i = 0; i < navItem.children.length; i++) {
+          if(this.isActive([navItem.children[i].name])) {
+            navItem.open = true;
+            break;
+          }
+        }
+      }
+    });
+
+    console.log(this.navigationList);
+  }
+
+  isActive(route: any[]) {
+    return this._router.isRouteActive(this._router.generate(route));
   }
 
   onResize(event) {

@@ -33,8 +33,8 @@ export const DASHBOARD_ROUTES: RouteDefinition[] = [
     name: '../Admin',
     component: AdminComponent,
     data: {
-      display: 'admin',
-      roles: ['user','admin'],
+      display: 'dashboard',
+      roles: ['admin'],
       redirect: 'Login',
       label: 'Admin'
     }
